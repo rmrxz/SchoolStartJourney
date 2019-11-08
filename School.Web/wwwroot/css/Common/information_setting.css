@@ -1,0 +1,80 @@
+
+.info-fill-in
+{
+    padding: 18px 4px;
+    margin: 0px 18px ;
+    position: relative;
+}
+ .info-label
+{
+    position: absolute;
+    top: 26px;
+    color:#818181 ;
+    font-weight: bold;
+    transition: 0.5s;
+    -o-transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+}
+ .input-required
+{
+    border: none;
+    width: 40%;
+    height: 26px;
+    border-bottom: 1px solid #00d9e2;
+    outline:none;
+    padding: 6px 8px;
+    font-size: 14px;
+    /*transition: 0.2s;*/
+    /*-o-transition: 0.2s;*/
+    /*-webkit-transition: 0.2s;*/
+    /*-moz-transition: 0.2s;*/
+}
+.info-fill-in textarea
+{
+    z-index: 998;
+}
+
+ .selsect-re
+{
+    height: 32px;
+    line-height: 32px;
+    padding-left: 2px;
+    width:41%;
+}
+
+
+.radio-input
+{
+    margin-left: 50px;
+    /*margin-top: 10px;*/
+}
+.radio-input input
+{
+    width: 20px;
+    padding: 4px 4px;
+    height: 16px;
+    color: #32c5d2 !important;
+}
+
+.radio-input .checkedo_true:before
+{
+    content: "";
+    content: "";
+    width: 10px;
+    height: 10px;
+    border: 1px solid red;
+}
+
+ .input-cue
+{
+    position: absolute;
+    top: 26px;
+    right: 2%;
+    font-size: 12px;
+    color: red;
+}
+.ri-cl
+{
+    display: inline-block;
+}

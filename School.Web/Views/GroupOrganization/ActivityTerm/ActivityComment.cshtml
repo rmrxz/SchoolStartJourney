@@ -1,0 +1,108 @@
+﻿@model IEnumerable<School.ViewModels.GroupOrganization.CommentVM>
+@{
+    var pageGroup = ViewBag.PageGroup as School.Common.ViewModelComponents.PagenateGroup;
+    var pageParameter = ViewBag.PageParameter as School.Common.JsonModels.ListPageParameter;
+}
+
+<div>
+    <div class="profile-activity">
+        <div class="act-time">
+            @{
+                @foreach (var comment in Model)
+                {
+                    <div class="activity-body act-in">
+                        <span class="arrow"></span>
+                        <div class="text">
+                            <a href="#" class="activity-img"><img class="avatar" src="@(comment.User.Avatar!=null?comment.User.Avatar.UploadPath:"/images/Common/Default/head_portrait.gif")" alt=""></a>
+                            <p class="attribution"><a href="#">@comment.User.Name</a> @comment.CommentDataTime</p>
+                            <p>@comment.Comment</p>
+                            @{
+                                foreach (var commentChildrens in comment.CommentChildrens)
+                                {
+                                    <div style="padding-left: 60px;margin-top: 10px;">
+                                        <a href="#" class="activity-img"><img class="avatar" src="@(commentChildrens.User.Avatar!=null?commentChildrens.User.Avatar.UploadPath:"/images/Common/Default/head_portrait.gif")" alt=""></a>
+                                        <p class="attribution"><a href="#">@commentChildrens.User.Name</a> @commentChildrens.CommentDataTime</p>
+                                        <p>@commentChildrens.Comment</p>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+    <!-- 处理翻页器 -->
+    <div id="pagenateArea">
+        @if (pageGroup.PagenateGroupItem == null)
+        {
+            <div class="center-block" style="font-size: 20px;text-align: center;"> 根据当前查询的条件，没有任何结果。</div>
+        }
+        else
+        {
+            <nav aria-label="...">
+                <ul class="pagination">
+                    @if (pageGroup.PagenateGroupItem.FirstIndex == 1)
+                    {
+                        <li class="disabled"><a pageGtoup="1" class="page-comment-index" aria-label="第一页"><span aria-hidden="true" class="glyphicon glyphicon-step-backward"></span></a></li>
+                        <li class="disabled"><a href="#" aria-label="回退一组"><span aria-hidden="true" class="glyphicon glyphicon-backward"></span></a></li>
+                        if (pageGroup.PageIndex >= 2)
+                        {
+                            <li class=""><a href="javascript:gotoPage('@(pageGroup.PageIndex-1)')" pageGtoup="@(pageGroup.PageIndex-1)" class="page-comment-index" aria-label="前一页"><span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span></a></li>
+                        }
+                        else
+                        {
+                            <li class="disabled"><a href="#" aria-label="前一页" class="page-comment-index"><span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span></a></li>
+                        }
+                    }
+                    else
+                    {
+                        <li class=""><a pageGtoup="1" class="page-comment-index" aria-label="第一页"><span aria-hidden="true" class="glyphicon glyphicon-step-backward"></span></a></li>
+                        <li class=""><a pageGtoup="@(pageGroup.PagenateGroupItem.FirstIndex-1)" class="page-comment-index" aria-label="回退一组"><span aria-hidden="true" class="glyphicon glyphicon-backward"></span></a></li>
+                        <li class=""><a pageGtoup="@(pageGroup.PageIndex-1)" class="page-comment-index" aria-label="前一页"><span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span></a></li>
+                    }
+                    @for (int i = pageGroup.PagenateGroupItem.FirstIndex; i < pageGroup.PagenateGroupItem.LastIndex + 1; i++)
+                    {
+                        var activeString = "";
+                        if (i == pageGroup.PageIndex)
+                        {
+                            activeString = "active";
+                        }
+                        <li class="@activeString "><a pageGtoup="@i" class="page-comment-index">@i <span class="sr-only">(current)</span></a></li>
+                    }
+                    @if (pageGroup.PagenateGroupItem.LastIndex == pageGroup.PageAmount)
+                    {
+                        if (pageGroup.PageIndex < pageGroup.PageAmount)
+                        {
+                            <li class=""><a pageGtoup="@(pageGroup.PageIndex+1)" class="page-comment-index" aria-label="下一页"><span aria-hidden="false" class="glyphicon glyphicon-chevron-right"></span></a></li>
+                        }
+                        else
+                        {
+                            <li class="disabled"><a href="#" aria-label="下一页"><span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span></a></li>
+                        }
+                        <li class="disabled"><a href="#" aria-label="向前一组"><span aria-hidden="true" class="glyphicon glyphicon-forward"></span></a></li>
+                        <li class="disabled"><a href="#" aria-label="最后页"><span aria-hidden="true" class="glyphicon glyphicon-fast-forward"></span></a></li>
+                    }
+                    else
+                    {
+                        <li class=""><a pageGtoup="@(pageGroup.PageIndex+1)" class="page-comment-index" aria-label="后一页"><span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span></a></li>
+                        <li class=""><a pageGtoup="@(pageGroup.PagenateGroupItem.LastIndex+1)" class="page-comment-index" aria-label="向前一组"><span aria-hidden="true" class="glyphicon glyphicon-forward"></span></a></li>
+                        <li class=""><a pageGtoup="@pageGroup.PageAmount" class="page-comment-index" aria-label="最后一条"><span aria-hidden="true" class="glyphicon glyphicon-fast-forward"></span></a></li>
+                    }
+
+                </ul>
+            </nav>
+        }
+    </div>
+</div>
+
+<input type="hidden" name="对应的类型" id="acTypeID" value="@pageParameter.ObjectTypeID">
+<input type="hidden" name="当前页码" id="acPageIndex" value="@pageParameter.PageIndex">
+<input type="hidden" name="每页数据条数" id="acPageSize" value="@pageParameter.PageSize">
+<input type="hidden" name="分页数量" id="acPageAmount" value="@pageParameter.PageAmount">
+<input type="hidden" name="相关的对象的总数" id="acObjectAmount" value="@pageParameter.ObjectAmount">
+<input type="hidden" name="当前的检索关键词" id="acKeyword" value="@pageParameter.Keyword">
+<input type="hidden" name="排序属性" id="acSortProperty" value="@pageParameter.SortProperty">
+<input type="hidden" name="排序方向" id="acSortDesc" value="@pageParameter.SortDesc">
+<input type="hidden" name="当前焦点对象 ID" id="acSelectedObjectID" value="@pageParameter.SelectedObjectID">
+<input type="hidden" name="当前是否为检索" id="acIsSearch" value="@pageParameter.IsSearch.ToString()">

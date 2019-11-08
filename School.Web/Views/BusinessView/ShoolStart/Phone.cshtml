@@ -1,0 +1,27 @@
+﻿
+@{
+    Layout = "_BackstageManagementLayout";
+}
+<div class="products">
+    <div class="container kv-main">
+        <form enctype="multipart/form-data">
+            <div class="form-group">
+                <input id="file-1" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="2">
+            </div>
+
+        </form>
+    </div>
+</div>
+<script>
+    $("#file-1").fileinput({
+        uploadUrl: '#',
+        allowedFileExtensions : ['jpg', 'png','gif'],
+        overwriteInitial: false,
+        maxFileSize: 1000,
+        maxFilesNum: 10,
+        //allowedFileTypes: ['image', 'video', 'flash'],
+        slugCallback: function(filename) {
+            return filename.replace('(', '_').replace(']', '_');
+        }
+	});
+</script>

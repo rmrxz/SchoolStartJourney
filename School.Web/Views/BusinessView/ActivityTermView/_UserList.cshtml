@@ -1,0 +1,31 @@
+﻿@model IEnumerable<School.ViewModels.ApplicationOrganization.ApplicationUserVM>
+<div class="ac-info-images">
+    <ul>
+        @{
+            if (Model.Count() == 0)
+            {
+                <div style="text-align:center;padding-top: 30px;font-size:22px"><p>暂无成员</p></div>
+            }
+            else
+            {
+                foreach (var item in Model)
+                {
+                    <li>
+                        <div class="ac-per-info clearfix">
+                            <a href="#" class="sc-left image-a seeUserDetailed" data_Id="@item.ID"><img src="@item.AvatarPath.UploadPath" alt=""></a>
+                            <div class="ac-per-info-add">
+                                <h4>@item.Name</h4>
+                                <p>@(item.Sex ? "男" : "女")</p>
+                                <a href="#" class="seeUserDetailed" data_Id="@item.ID"><i class="fa fa-plus"></i>查看</a>
+                            </div>
+                        </div>
+                    </li>
+                }
+            }
+        }
+
+
+    </ul>
+</div>
+
+

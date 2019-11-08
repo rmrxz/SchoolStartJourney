@@ -1,0 +1,44 @@
+﻿@model School.ViewModels.GroupOrganization.AnAssociationVM
+@{
+    Layout = "_emptyLayout";
+}
+
+<form class="form-horizontal" asp-action="Sava" id="activityTermEditor" data-toggle="validator" role="form">
+    <input type="hidden" name="ID" id="ID" value="@Model.ID" />
+    <div class="form-group">
+        <label for="Name" class="col-sm-2 control-label">名称：</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control" name="Name" id="Name" placeholder="活动名称" value="@Model.Name" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Mobile" class="col-sm-2 control-label">学校地址：</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control" name="SchoolAddress" id="SchoolAddress" placeholder="活动地点" value="@Model.SchoolAddress" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Mobile" class="col-sm-2 control-label">创建的时间：</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control" name="CreateDataTime" id="CreateDataTime" placeholder="上限人数" value="@Model.CreateDataTime" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Mobile" class="col-sm-2 control-label">上限人数：</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control" name="MaxNumber" id="MaxNumber" placeholder="报名参与时间" value="@Model.MaxNumber" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Description" class="col-sm-2 control-label">社团简介：</label>
+        <div class="col-sm-9">
+            <textarea class="form-control" rows="4" name="Description" id="Description">@Model.Description</textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">提交数据</button>
+        </div>
+    </div>
+</form>

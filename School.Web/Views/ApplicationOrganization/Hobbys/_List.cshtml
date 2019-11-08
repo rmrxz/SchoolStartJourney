@@ -1,0 +1,117 @@
+﻿@model IEnumerable<School.ViewModels.ApplicationOrganization.HobbyVM>
+@{
+    Layout = "_emptyLayout";
+    var pageGroup = ViewBag.PageGroup as School.Common.ViewModelComponents.PagenateGroup;
+    var pageParameter = ViewBag.PageParameter as School.Common.JsonModels.ListPageParameter;
+}
+<div class="p-content">
+    <div class="padding-right-7">
+        <h2 class="sub-header">爱好管理界面</h2>
+        <a href="#" type="button" class="btn btn-success pull-right sc-color create-hobbys">新建数据</a>
+        <div class="input-group pull-right" style="width:250px;margin-right: 20px;">
+            <input id="inputKeyWord" type="text" class="form-control" placeholder="输入关键词..." value="@pageParameter.Keyword">
+            <span class="input-group-btn">
+                <button class="btn btn-primary sc-color query-hobbys" type="button">查询</button>
+            </span>
+        </div>
+    </div>
+
+    <div class="">
+        <table class="table-list table-striped">
+            <thead class="table-list-thead">
+                <tr>
+                    <th class="width-t-3">图片</th>
+                    <th class="width-t-3">编号</th>
+                    <th>名称</th>
+                    <th>说明</th>
+                    <th class="">数据操作</th>
+                </tr>
+            </thead>
+            <tbody class="table-list-tbody">
+                @{
+                    var counter = 0;
+                    foreach (var hobby in Model)
+                    {
+                         counter++;
+                        <tr class="width-tr">
+                            <td class="width-t-3"><img src="@(hobby.Avatar==null?"/images/Common/Default/no_image.png":hobby.Avatar.UploadPath)" style="    width: 40px;height: 40px;" alt="Alternate Text" /></td>
+                            <td class="width-t-3">@counter</td>
+                            <td>@hobby.Name</td>
+                            <td>@hobby.Description</td>
+                            <td class="">
+                                <div class="btn-group btn-group-xs width-10-td" role="group" aria-label="...">
+                                    <button type="button" class="btn btn-primary edit-hobbysPhone" value="@hobby.ID">更改图片</button>
+                                    <button type="button" class="btn btn-primary edit-hobbys" value="@hobby.ID">编辑</button>
+                                    <button type="button" class="btn btn-primary delete-hobbys" p_name="@hobby.Name" value="@hobby.ID">删除</button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+    <!-- 处理翻页器 -->
+    <div id="pagenateArea">
+        @if (pageGroup.PagenateGroupItem == null)
+        {
+            <div class="center-block"> 根据当前查询的条件，没有任何结果。</div>
+        }
+        else
+        {
+            <nav aria-label="...">
+                <ul class="pagination">
+                    @if (pageGroup.PagenateGroupItem.FirstIndex == 1)
+                    {
+                        <li class="disabled"><a pageGtoup="1" class="page-index" aria-label="第一页"><span aria-hidden="true" class="glyphicon glyphicon-step-backward"></span></a></li>
+                        <li class="disabled"><a href="#" aria-label="回退一组"><span aria-hidden="true" class="glyphicon glyphicon-backward"></span></a></li>
+                        if (pageGroup.PageIndex >= 2)
+                        {
+                            <li class=""><a href="javascript:gotoPage('@(pageGroup.PageIndex-1)')" pageGtoup="@(pageGroup.PageIndex-1)" class="page-index" aria-label="前一页"><span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span></a></li>
+                        }
+                        else
+                        {
+                            <li class="disabled"><a href="#" aria-label="前一页" class="page-index"><span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span></a></li>
+                        }
+                    }
+                    else
+                    {
+                        <li class=""><a pageGtoup="1" class="page-index" aria-label="第一页"><span aria-hidden="true" class="glyphicon glyphicon-step-backward"></span></a></li>
+                        <li class=""><a pageGtoup="@(pageGroup.PagenateGroupItem.FirstIndex-1)" class="page-index" aria-label="回退一组"><span aria-hidden="true" class="glyphicon glyphicon-backward"></span></a></li>
+                        <li class=""><a pageGtoup="@(pageGroup.PageIndex-1)" class="page-index" aria-label="前一页"><span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span></a></li>
+                    }
+                    @for (int i = pageGroup.PagenateGroupItem.FirstIndex; i < pageGroup.PagenateGroupItem.LastIndex + 1; i++)
+                    {
+                        var activeString = "";
+                        if (i == pageGroup.PageIndex)
+                        {
+                            activeString = "active";
+                        }
+                        <li class="@activeString "><a pageGtoup="@i" class="page-index">@i <span class="sr-only">(current)</span></a></li>
+                    }
+                    @if (pageGroup.PagenateGroupItem.LastIndex == pageGroup.PageAmount)
+                    {
+                        if (pageGroup.PageIndex < pageGroup.PageAmount)
+                        {
+                            <li class=""><a pageGtoup="@(pageGroup.PageIndex+1)" class="page-index" aria-label="下一页"><span aria-hidden="false" class="glyphicon glyphicon-chevron-right"></span></a></li>
+                        }
+                        else
+                        {
+                            <li class="disabled"><a href="#" aria-label="下一页"><span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span></a></li>
+                        }
+                        <li class="disabled"><a href="#" aria-label="向前一组"><span aria-hidden="true" class="glyphicon glyphicon-forward"></span></a></li>
+                        <li class="disabled"><a href="#" aria-label="最后页"><span aria-hidden="true" class="glyphicon glyphicon-fast-forward"></span></a></li>
+                    }
+                    else
+                    {
+                        <li class=""><a pageGtoup="@(pageGroup.PageIndex+1)" class="page-index" aria-label="后一页"><span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span></a></li>
+                        <li class=""><a pageGtoup="@(pageGroup.PagenateGroupItem.LastIndex+1)" class="page-index" aria-label="向前一组"><span aria-hidden="true" class="glyphicon glyphicon-forward"></span></a></li>
+                        <li class=""><a pageGtoup="@pageGroup.PageAmount" class="page-index" aria-label="最后一条"><span aria-hidden="true" class="glyphicon glyphicon-fast-forward"></span></a></li>
+                    }
+
+                </ul>
+            </nav>
+        }
+    </div>
+</div>
+

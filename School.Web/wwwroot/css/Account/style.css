@@ -1,0 +1,414 @@
+/*--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+--*/
+/*--reset--*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, dl, dt, dd, ol, nav ul, nav li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+ol, ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+    blockquote:before, blockquote:after, q:before, q:after {
+        content: '';
+        content: none;
+    }
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+/*--start editing from here--*/
+a, a:hover {
+    text-decoration: none;
+}
+
+.txt-rt {
+    text-align: right;
+}
+/* text align right */
+.txt-lt {
+    text-align: left;
+}
+/* text align left */
+.txt-center {
+    text-align: center;
+}
+/* text align center */
+.float-rt {
+    float: right;
+}
+/* float right */
+.float-lt {
+    float: left;
+}
+/* float left */
+.clear {
+    clear: both;
+}
+/* clear float */
+.pos-relative {
+    position: relative;
+}
+/* Position Relative */
+.pos-absolute {
+    position: absolute;
+}
+/* Position Absolute */
+.vertical-base {
+    vertical-align: baseline;
+}
+/* vertical align baseline */
+.vertical-top {
+    vertical-align: top;
+}
+/* vertical align top */
+nav.vertical ul li {
+    display: block;
+}
+/* vertical menu */
+nav.horizontal ul li {
+    display: inline-block;
+}
+/* horizontal menu */
+img {
+    max-width: 100%;
+}
+
+html, body {
+    height: 100%;
+}
+/*--end reset--*/
+body {
+    font-family: 'Roboto', sans-serif;
+    background: url('../../images/account/images/bg1.jpg') no-repeat 0px 0px;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.main-agile h1 {
+    font-size: 3em;
+    text-align: center;
+    color: #fff;
+    font-weight: 100;
+}
+/*-- main --*/
+.main-agile {
+    padding: 8em 0 0;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+.content {
+    width: 960px;
+    margin: 0 auto;
+}
+
+.ov-div {
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.top-grids {
+    position: relative;
+    margin: 3em 0 0 0;
+    margin: auto;
+    width: 50%;
+    height: 700px;
+}
+
+.interface {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    transition: 1s;
+    -o-transition: 1s;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+}
+/*.inte-left
+{
+    right: -730px;
+}*/
+
+.nterface-none {
+    display: none;
+}
+
+.signin-form {
+    background: rgba(0, 0, 0, 0.78);
+    padding: 2em;
+    -webkit-appearance: none;
+}
+
+    .signin-form h2, .signin-form h3, .signin-form h3 {
+        font-size: 1.2em;
+        color: #FFFFFF;
+        text-align: center;
+        margin: 0 0 1em 0;
+        font-weight: 400;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+    }
+
+    .signin-form input[type="text"], .signin-form input[type="email"], .signin-form input[type="mobileNumber"], .signin-form input[type="password"], .signin-form textarea {
+        outline: none;
+        font-size: .9em;
+        color: #FFFFFF;
+        padding: 1em 1em;
+        margin: 0;
+        width: 92.5%;
+        border: none;
+        border-bottom: solid 1px #e2eaef;
+        -webkit-appearance: none;
+        display: block;
+        background: none;
+    }
+
+    .signin-form textarea {
+        min-height: 125px;
+        margin: 0 0 2em 0;
+        resize: none;
+        font-family: 'Roboto', sans-serif;
+    }
+
+.operation {
+    position: relative;
+    padding: 2em 0;
+    color: #FFFFFF;
+}
+
+    .operation .memory-assword {
+        position: relative;
+        display: inline-block;
+        width: 50%;
+        /*height:20px;*/
+        /*line-height: 20px;*/
+        /*vertical-align: middle;*/
+    }
+
+        .operation .memory-assword span {
+            display: inline-block;
+            padding-left: 4px;
+            position: absolute;
+            top: 2px;
+            font-size: 12px;
+        }
+
+.prompt {
+    color: red;
+    padding: 0 20px;
+    display: block;
+    width: 80%;
+    display: table;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.link_a {
+    float: right;
+    color: #fff;
+    font-size: 12px;
+    transition: 0.5s;
+    -o-transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+}
+
+    .link_a:hover {
+        color: #009ffb;
+    }
+
+.signin-form input[type="text"], .signin-form input[type="email"], .signin-form input[type="password"] {
+    margin: 0 0 1em 0;
+}
+
+.signin-form input[type="submit"] {
+    font-size: 1em;
+    color: #fff;
+    background: #009ffb;
+    border: 2px solid #009ffb;
+    outline: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    padding: .6em 1em;
+    width: 100%;
+    -webkit-appearance: none;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+}
+
+    .signin-form input[type="submit"]:hover {
+        background: none;
+        border: 2px solid #FFFFFF;
+        color: #FFFFFF;
+    }
+
+.signin-agileits-bottom p {
+    text-align: center;
+    margin: 1.5em 0 0 0;
+    font-size: .9em;
+}
+
+    .signin-agileits-bottom p a {
+        color: #ffffff;
+        -webkit-transition: 0.5s all;
+        -moz-transition: 0.5s all;
+        -o-transition: 0.5s all;
+        -ms-transition: 0.5s all;
+        transition: 0.5s all;
+    }
+
+        .signin-agileits-bottom p a:hover {
+            color: #009ffb;
+        }
+
+
+
+.signin-firm .return-xy {
+    background: #009ffb;
+    padding: 1em 0;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 1s;
+    -o-transition: 1s;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+}
+
+    .signin-firm .return-xy:hover {
+        color: #bfb5b5;
+        background: #0a8fdc;
+    }
+
+.signup-form {
+    margin: 2em 0;
+}
+
+.top-grids-right {
+    margin: 0 0 0 2em;
+}
+
+.reset-password input[type="password"] {
+    margin: 0 0 2em 0;
+}
+
+.recover-password {
+    margin: 2em 0;
+}
+
+    .recover-password input[type="email"] {
+        margin: 0 0 2em 0;
+    }
+
+.subscribe {
+    margin: 0 0 2em 0;
+}
+
+    .subscribe input[type="email"] {
+        margin: 0 0 2em 0;
+    }
+
+.w3layouts_main_grid span {
+    padding: .5em 0;
+    display: block;
+}
+
+    .w3layouts_main_grid span label {
+        color: #FFFFFF;
+        font-size: 14px;
+        text-transform: uppercase;
+        font-style: normal;
+        float: left;
+        width: 21%;
+        margin: .8em 0 0;
+        position: relative;
+    }
+
+        .w3layouts_main_grid span label i {
+            position: absolute;
+            right: 15%;
+            top: 0%;
+            color: #fff;
+            font-style: normal;
+        }
+
+#category, #category1, #risk, #priority, .signin-form input[type="time"] {
+    outline: none;
+    font-size: .9em;
+    color: #b7b6b6;
+    padding: 1em 1em;
+    margin: 0 0 1em 0;
+    width: 92.5%;
+    border: none;
+    border-bottom: solid 1px #e2eaef;
+    -webkit-appearance: none;
+    display: block;
+    background: none;
+}
+
+#category, #category1, #risk, #priority {
+    width: 100% !important;
+}
+
+option {
+    color: #212121;
+}
+
+input.reminder {
+    margin: 0 0 2em 0 !important;
+}
+
+.copyright {
+    display: block;
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+    .copyright p {
+        font-size: .9em;
+        color: #fff;
+    }
+
+        .copyright p a {
+            color: #ffffff;
+            -webkit-transition: 0.5s all;
+            -moz-transition: 0.5s all;
+            -o-transition: 0.5s all;
+            -ms-transition: 0.5s all;
+            transition: 0.5s all;
+        }
+
+            .copyright p a:hover {
+                color: #009ffb;
+            }

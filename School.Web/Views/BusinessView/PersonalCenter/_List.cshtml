@@ -1,0 +1,77 @@
+﻿@model IEnumerable<School.ViewModels.GroupOrganization.ActivityTerms.ActivityTermVM>
+@{
+    ViewData["Title"] = "List";
+    var user = User.Claims.FirstOrDefault();
+}
+
+<ul>
+    @foreach (var activity in Model)
+    {
+        <li>
+            <div>
+                <div class="head-titel ar-head clearfix">
+                    <div class="sc-left">
+                        <a href="#" class="ar-per sc-left">
+                            <img class="ar-portrait" src="@(activity.User.Avatar == null ? "/images/Common/Default/head_portrait.gif" : activity.User.Avatar.UploadPath)" alt="">
+                        </a>
+                        <div class="u-name">
+                            <a href="#">@activity.User.Name</a>
+                            <div><span>@activity.User.School</span></div>
+                        </div>
+                    </div>
+                    @{
+                        if (activity.ActivityUser.Id==user.Value)
+                        {
+                            <div class="sc-right"><a href="#" class="delete-activity-record" data_Id="@activity.ID">删除记录</a></div>
+                        }
+                    }
+
+                </div>
+                <div class="activity-con">
+                    <input type="hidden" name="Id" id="Id" value="@activity.ID" />
+                    <div class="ar-describe">
+                        <div class="ar-info">
+                            <div class="">
+                                <h4 class="ar-info-name">@activity.Name</h4>
+                                <span class="ar-info-address">@activity.Address</span>
+                            </div>
+                            <div class="ar-time">
+                                <p>@activity.StartDataTime<span>至</span>@activity.EndDataTime</p>
+                            </div>
+                            <p>@activity.Description</p>
+                        </div>
+
+                        <div class="de_head clearfix">
+                            <ul>
+                                @{
+                                    if (activity.Images != null)
+                                    {
+                                        if (activity.Images.Count > 0)
+                                        {
+                                            foreach (var image in activity.Images)
+                                            {
+                                                <li class="ar-image">
+                                                    <img class="activity-img-per" src="@image.UploadPath" alt="">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="clearfix ar-operate">
+                        <a href="#" class="sc-left" title="点击查看所有">@(activity.CommentNumber.ToString() + "条评论")</a>
+                        <div class="sc-right ar-other">
+                            <a href="#" title="活动信息"><i class=" fa fa-bars"></i>活动详情</a>
+                            <a href="#" title="活动参与人"><i class=" fa fa-user-o"></i>参与人</a>
+                        </div>
+                    </div>
+                    <div class="activityComments">
+                        @Html.Partial("~/Views/BusinessView/PersonalCenter/_GetActivityComments.cshtml", activity.Comments)
+                    </div>
+                </div>
+            </div>
+        </li>
+    }
+</ul>

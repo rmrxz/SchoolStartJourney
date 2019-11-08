@@ -1,0 +1,107 @@
+﻿@model School.ViewModels.GroupOrganization.ActivityTerms.ActivityTermVM
+@{
+    Layout = "_TemplateInterfaceLayout";
+    if (Model.AnAssociation != null)
+    {
+        var sponsor = Model.AnAssociation;
+    }
+    else
+    {
+        var sponsor = Model.User;
+    }
+}
+<script src="~/js/BusinessView/ActuvutyTerm/Index.js"></script>
+<!--内容开始-->
+<div>
+    <div class="container">
+        <div class="total-content clearfix">
+            <div class="sc-left recommend" id="p_fixed">
+                <div class="per_data sa-margin-none sa-margin-2c">
+                    <h4 class="title_per">组织人</h4>
+                    <div>
+                        <ul>
+                            <li class="de_li">
+                                <div class="de_pa clearfix">
+                                    <div class="de_img sc-left">
+                                        @if (Model.AnAssociation != null)
+                                        {
+                                            <a href="#"><img src="@Model.AnAssociation.Avatar.UploadPath" alt=""></a>
+                                        }
+                                        else
+                                        {
+                                            <a href="#" data_Id="@Model.User.Id"><img src="@Model.User.Avatar.UploadPath" alt=""></a>
+                                        }
+                                    </div>
+                                    <div class="de_ac_info">
+                                        @if (Model.AnAssociation != null)
+                                        {
+                                            <h4>@Model.AnAssociation.Name</h4>
+                                            <p>@Model.AnAssociation.SchoolAddress</p>
+                                            <p>@Model.AnAssociation.User.MobileNumber</p>
+                                        }
+                                        else
+                                        {
+
+                                            <h4> @Model.User.Name </h4>
+                                            <p> @Model.User.UserAddress </p>
+                                            <p> @Model.User.MobileNumber </p>
+                                        }
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="per_data ">
+                    <h4 class="title_per">活动说明</h4>
+                    <div class="clearfix hobby">
+                        <ul class="clearfix"></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="sc-right ac-con">
+                <div class="clearfix choice">
+                    <h3>活动详细内容</h3>
+                    <div class="addAndCancel sc-right">
+                        <a href="#" class="addActivity" data_Id="@Model.ID">参加</a>
+                        <a href="#" class="cancelActivity" data_Id="@Model.ID">取消</a>
+                    </div>
+                </div>
+                <div class="ac-pe-con">
+                    <div class="ac-detailed clearfix">
+                        <a href="#" class="ac-de-href sc-left">
+                            <img src="@Model.Avatar.UploadPath" alt="">
+                        </a>
+                        <div class="ac-de-con sc-right">
+                            <input type="hidden" name="detailied_Id" value="@Model.ID" />
+                            <h3 class="ac-de-titel"><a href="#">@Model.Name</a></h3>
+                            <p class="ac-de-time">活动地点：<span>@Model.Address</span></p>
+                            <p class="ac-de-time">报名截止时间：<span>@Model.SignDataTime</span></p>
+                            <p class="ac-de-time">活动时间：<span>@Model.StartDataTime<b>至</b>@Model.EndDataTime</span></p>
+                            <p class="ac-de-time">费用：<span>20</span></p>
+                            <div class="ac-de-number"><span>上限人数：<label>@Model.MaxNumber</label></span><span>已报:<label>@ViewBag.Number</label></span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ac-info-explain">
+                    <div class="ac-de-explain ac-ex-con clearfix">
+                        <a href="#" id="ac-imges-detailed" data_Id="@Model.ID">图片</a>
+                        <a href="#" id="ac-user-detailed" data_Id="@Model.ID">社团成员</a>
+                        <a href="#" id="ac-user-comments" data_Id="@Model.ID">所有评论</a>
+                        @{
+                            if (User.Claims.FirstOrDefault() != null)
+                            {
+                                <a href="#" class="auxiliaryClickComment" title="添加评论" style="font-size: 18px;float: right;font-weight: 100;margin-top: 8px;display:none"><i class="fa fa-pencil-square-o sc-right"></i></a>
+                            }
+                        }
+                    </div>
+                    <div class="clearfix" id="otherInfo">
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--内容结束-->

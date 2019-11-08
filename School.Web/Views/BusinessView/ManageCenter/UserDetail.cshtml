@@ -1,0 +1,30 @@
+﻿@model School.ViewModels.ApplicationOrganization.ApplicationUserVM
+@{ 
+    System.TimeSpan time = DateTime.Now - Model.RegisterTime;
+    var getDay = Convert.ToInt16(time.TotalDays);
+}
+<div>
+    <div class="portrait sc-left">
+        <a href="#" class="por_a"><img src="@Model.AvatarPath.UploadPath" class="userUploadPath" alt=""></a>
+    </div>
+    <div class="person-introduce">
+        <div>
+            <a href="#" class="personName" title="查看个人详细资料">@Model.Name</a>
+            <h5 class="autograph">@Model.UserAddress</h5>
+            <div class="per-ah autograph">
+                <h5 class="son sc-left">校龄：<span>@getDay</span>天</h5>
+                <span class="son autograph">@Model.Description</span>
+            </div>
+        </div>
+        <div class="navigation nav navbar-nav">
+            <ul>
+                <li><a class="per-link" href="#">我的活动</a></li>
+                <li><a class="per-link" href="#">活动记录</a></li>
+                <li><a class="per-link" href="#">我的社团</a></li>
+                <li><a class="per-link" href="#">我的相册</a></li>
+                <li><a class="per-link" href="#">我的评论</a></li>
+                <li><a class="per-link" href="#">其它</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

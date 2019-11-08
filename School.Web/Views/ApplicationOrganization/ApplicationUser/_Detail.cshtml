@@ -1,0 +1,122 @@
+﻿
+@model School.ViewModels.ApplicationOrganization.ApplicationUserVM
+<section id="" class="">
+    <!--main content start-->
+    <section id="">
+        <section class="">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="page-header" style="display:inline-block"><i class="fa fa-user-md"></i> 用户信息</h3>
+                    <a href="" class="page-header btn btn-success pull-right application-list" data-pageIndex="">返回列表</a>
+                </div>
+            </div>
+            <div class="row">
+                <!-- profile-widget -->
+                <div class="col-lg-12">
+                    <div class="profile-widget profile-widget-info">
+                        <div class="panel-body">
+                            <div class="col-lg-2 col-sm-2">
+                                <h4>@Model.UserName</h4>
+                                <div class="follow-ava">
+                                    <img src="@(Model.AvatarPath!=null?Model.AvatarPath.UploadPath:"/images/Common/Default/head_portrait.gif")" alt="">
+                                </div>
+                                <h6>@(Model.Persons != null ? "管理员" : "用户")</h6>
+                            </div>
+                            <div class="col-lg-4 col-sm-4 follow-info">
+                                <p>@Model.Description</p>
+                                <p></p>
+                                <p><span class="icon_pin_alt">@Model.UserAddress</span></p>
+                                <h6>
+                                    <span><i class="icon_clock_alt"></i>@Model.RegisterTime</span>
+                                    <span><i class="fa fa-intersex"></i>@(Model.Sex ? "男" : "女")</span>
+                                </h6>
+                                @*<h6 style="margin-top:10px">
+                                    <span><i class="fa fa-mobile-phone"></i>@Model.MobileNumber</span>
+                                    <span><i class="fa fa-qq"></i>@Model.QQ</span>
+                                    <span><i class="fa fa-tag"></i>@Model.StudentID</span>
+                                </h6>*@
+                            </div>
+                            <div class="col-lg-2 col-sm-6 follow-info weather-category">
+                                <ul>
+                                    <li class="active">
+                                        <i class="fa-2x">@ViewBag.Friends</i><br>
+                                        用户好友数量
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <div class="col-lg-2 col-sm-6 follow-info weather-category">
+                                <ul>
+                                    <li class="active">
+                                        <i class="fa-2x">@ViewBag.AnAssociations</i><br>
+                                        用户所在社团数量
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <div class="col-lg-2 col-sm-6 follow-info weather-category">
+                                <ul>
+                                    <li class="active">
+                                        <i class="fa-2x">@ViewBag.Activitys</i><br>
+                                        用户参与活动次数
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- page start-->
+            <div class="row">
+                <div class="col-lg-12">
+                    <section class="panel">
+                        <div class="panel-body">
+                            <div class="tab-content">
+                                <!-- profile -->
+                                <div id="" class="">
+                                    <section class="">
+                                        <div class="bio-graph-heading">
+                                           这里是用户(@Model.UserName)的详细数据，这些数据都是用户的隐私，内部管理人员不可泄漏任何数据。
+                                        </div>
+                                        <div class="panel-body bio-graph-info">
+                                            <h1>详细信息</h1>
+                                            <div class="row">
+                                                <div class="bio-row">
+                                                    <p><span>昵称</span>: @Model.Name</p>
+                                                </div>
+                                                <div class="bio-row">
+                                                    <p><span>Q Q </span>: @Model.QQ </p>
+                                                </div>
+                                                <div class="bio-row">
+                                                    <p><span>电话号码 </span>: @Model.MobileNumber</p>
+                                                </div>
+                                                <div class="bio-row">
+                                                    <p><span>邮箱 </span>: @Model.EMail</p>
+                                                </div>
+                                                <div class="bio-row">
+                                                    <p><span>学校 </span>: @Model.School</p>
+                                                </div>
+                                                <div class="bio-row">
+                                                    <p><span>出生日期 </span>:@Model.Birthday.ToString("yyyy-mm-dd")</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <section>
+                                        <div class="row">
+                                        </div>
+                                    </section>
+                                </div>
+                                <!-- edit-profile -->
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- page end-->
+        </section>
+    </section>
+    <!--main content end-->
+</section>

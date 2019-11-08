@@ -1,0 +1,191 @@
+
+/*中间部分*/
+.ag7-main {
+    padding-top: 60px;
+    width: 1000px;
+    margin: 0 auto;
+    padding-bottom: 70px;
+}
+
+    .ag7-main .phone-index-banner {
+        display: none;
+    }
+
+/*左侧栏*/
+.ag7-cont {
+    width: 680px;
+    float: left;
+}
+
+.wrap {
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+/*公共*/
+.yahei {
+    font-family: '\5FAE\8F6F\96C5\9ED1';
+}
+
+.songti {
+    font-family: "NSimSun","SimSun",Arial;
+}
+
+/*首页右侧*/
+.aside {
+    width: 280px;
+    float: right;
+}
+
+.ag7-bannerslide {
+    position: relative;
+    margin-bottom: 50px;
+}
+
+    .ag7-bannerslide .slidebox {
+        position: relative;
+        height: 720px;
+    }
+
+        .ag7-bannerslide .slidebox li {
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100% !important;
+            left: 0px;
+            top: 0px;
+        }
+
+    .ag7-bannerslide a img {
+        display: block;
+        max-width: 100%;
+        height: 100%;
+        width: 100%;
+    }
+
+    .ag7-bannerslide .slideinfo {
+        width: 600px;
+        position: absolute;
+        left: 0px;
+        bottom: 30px;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 10;
+    }
+
+    .ag7-bannerslide .slidetitle {
+        height: 108px;
+        padding: 24px 50px;
+        color: #fff;
+        font-family: 微软雅黑;
+        overflow: hidden;
+    }
+
+        .ag7-bannerslide .slidetitle h2 {
+            font-size: 30px;
+            height: 50px;
+            line-height: 50px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .ag7-bannerslide .slidetitle h3 {
+            font-weight: 100;
+            font-size: 14px;
+            overflow: hidden;
+            height: 60px;
+            text-overflow: ellipsis;
+        }
+
+    .ag7-bannerslide .slidelist {
+        height: 40%;
+        box-sizing: border-box;
+        width: 100%;
+        padding: 14px 0;
+        background: rgba(0, 0, 0, 0.5);
+        position: relative;
+    }
+
+        .ag7-bannerslide .slidelist ul {
+            text-align: center;
+        }
+
+            .ag7-bannerslide .slidelist ul li {
+                display: inline-block;
+                margin: 0 4px;
+                width: 110px;
+                height: 60px;
+                cursor: pointer;
+            }
+
+                .ag7-bannerslide .slidelist ul li img {
+                    display: inline-block;
+                    width: 100%;
+                    height: 100%;
+                }
+
+        .ag7-bannerslide .slidelist .mask {
+            width: 114px;
+            height: 64px;
+            position: absolute;
+            left: 54px;
+            top: 11px;
+            display: block;
+        }
+
+            .ag7-bannerslide .slidelist .mask span {
+                display: inline-block;
+                width: 12px;
+                height: 12px;
+                position: absolute;
+            }
+
+            .ag7-bannerslide .slidelist .mask .mask-top {
+                top: 0;
+                left: 0;
+                border-top: 1px solid #fff;
+                border-left: 1px solid #fff;
+            }
+
+            .ag7-bannerslide .slidelist .mask .mask-left {
+                border-top: 1px solid #fff;
+                border-right: 1px solid #fff;
+                right: 0 !important;
+            }
+
+            .ag7-bannerslide .slidelist .mask .mask-bottom {
+                border-bottom: 1px solid #fff;
+                border-right: 1px solid #fff;
+                right: 0 !important;
+                bottom: 0 !important;
+            }
+
+            .ag7-bannerslide .slidelist .mask .mask-right {
+                border-left: 1px solid #fff;
+                border-bottom: 1px solid #fff;
+                bottom: 0 !important;
+            }
+
+.phone-index-banner {
+    position: relative;
+}
+
+    .phone-index-banner img {
+        display: block;
+    }
+
+    .phone-index-banner h3 {
+        position: absolute;
+        width: 100%;
+        bottom: 0px;
+        font-size: 14px;
+        height: 40px;
+        padding: 0 10px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        line-height: 40px;
+        background: rgba(0, 0, 0, .5);
+        color: #fff;
+        font-family: 微软雅黑;
+    }

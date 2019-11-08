@@ -1,0 +1,116 @@
+﻿@model School.ViewModels.ApplicationOrganization.ApplicationUsers.ApplicationUserInput
+@{
+    bool isMan = false;
+    if (Convert.ToBoolean(Model.Sex))
+    {
+        isMan = true;
+    }
+}
+<div class="activityInfo">
+    <form action="#" name="userInfoForm">
+        <input type="hidden" name="ID" value="@Model.ID" />
+        <div style="">
+            <div class="operationDescription">
+                <h5 class="title_per title-in">个人资料</h5>
+            </div>
+            <div class="info-height">
+                <div class="info-fill-in">
+                    <label class="info-label">昵称：</label>
+                    <div class="operation-box con-color">
+                        <input type="text" class="input-required" name="Name" value="@Model.Name">
+                    </div>
+                    <span class="input-cue">请填写名称</span>
+                </div>
+            </div>
+            <div class="info-height">
+                <div class="info-fill-in">
+                    <label class="info-label">QQ：</label>
+                    <div class="operation-box con-color">
+                        <input type="text" class="input-required" name="QQ" value="@Model.QQ">
+                    </div>
+                    <span class="input-cue">请填写QQ</span>
+                </div>
+            </div>
+            <div class="info-height">
+                <div class="info-fill-in">
+                    <label class="info-label">邮箱：</label>
+                    <div class="operation-box con-color">
+                        <input type="text" class="input-required" name="Email" value="@Model.Email">
+                    </div>
+                    <span class="input-cue">请填写邮箱</span>
+                </div>
+            </div>
+            <div class="info-height">
+                <div class="info-fill-in">
+                    <label class="info-label">手机号码：</label>
+                    <div class="operation-box con-color">
+                        <input type="text" class="input-required" name="MobileNumber" value="@Model.MobileNumber">
+                    </div>
+                    <span class="input-cue">请填写手机号码</span>
+                </div>
+            </div>
+            <div class="info-height">
+                <div class="info-fill-in">
+                    <label class="info-label">出生日期：</label>
+                    <div class="operation-box con-color">
+                        <input type="text" class="input-required userBirthday" name="Birthday" value="@Model.Birthday.ToString("yyyy-MM-dd")">
+                    </div>
+                    <span class="input-cue">请选择出生日期</span>
+                </div>
+            </div>
+            <div class="info-height">
+                <div class="info-fill-in">
+                    <label class="info-label">性别：</label>
+                    <input type="hidden" name="Sex" value="@Model.Sex" />
+                    <div class="radio-input">
+                        <div class="ri-cl">
+                            <input type="radio" class="checkedo_true" value="man" checked="@(isMan?true:false)" /><label for="">男</label>
+                        </div>
+                        <div class="ri-cl">
+                            <input type="radio" class="checkedo_true" value="female" checked="@(!isMan?true:false)"><label for="">女</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="info-height">
+                <div class="info-fill-in">
+                    <label class="info-label">地址：</label>
+                    <div class="operation-box con-color">
+                        <input type="text" class="input-required" name="UserAddress" value="@Model.UserAddress">
+                    </div>
+                    <span class="input-cue">请填写地址</span>
+                </div>
+            </div>
+            <div class="info-height">
+                <div class="info-fill-in">
+                    <label class="info-label">所在学校：</label>
+                    <div class="operation-box con-color">
+                        <input type="text" class="input-required" name="School" value="@Model.School">
+                    </div>
+                    <span class="input-cue">请填写所在学校</span>
+                </div>
+            </div>
+            <div class="info-height">
+                <div class="info-fill-in">
+                    <label class="info-label">个人说明：</label>
+                    <div class="operation-box con-color">
+                        <textarea class="input-required" name="Description" rows="4">@Model.Description</textarea>
+                    </div>
+                    <span class="input-cue">请填写个人说明</span>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="info-operation-bottom">
+        <button class="save-userInfo">保存</button>
+    </div>
+</div>
+
+<script>
+    borainTimeChoice({
+        start: ".userBirthday",
+        end: "",
+        level: "YMD",
+        less: false
+    });
+</script>

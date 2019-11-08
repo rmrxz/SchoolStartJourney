@@ -1,0 +1,43 @@
+﻿@model IEnumerable<School.ViewModels.GroupOrganization.ActivityTerms.ActivityTermVM>
+<div class="clearfix">
+    @{
+        if (Model.Count() == 0)
+        {
+            <div style="height:600px;text-align:center;padding-top: 30px;font-size:22px"><p>查询到O条活动</p></div>
+        }
+        else
+        {
+            <div class="clearfix">
+                <ul>
+                    @{
+                        foreach (var activity in Model)
+                        {
+                            <li class="an-info-con clearfix">
+                                <div class="image">
+                                    <a href="#" class="activity-detailied" data_Id="@activity.ID"><img src="@(activity.Avatar!=null?activity.Avatar.UploadPath:"/images/Common/Default/no_image.png")" alt=""></a>
+                                </div>
+                                <div class="title">
+                                    <h3><a href="#" class="activity-detailied" data_Id="@activity.ID">@activity.Name</a><a class="founder">@activity.User.Name</a></h3>
+                                </div>
+                                <div class="number sc-left">
+                                    <span class="per_num_str">已报:@activity.EnteredNumber</span>
+                                    @*<span class="per_number">@activity.AnAssociationNum</span>*@
+                                </div>
+                                <div class="join_see_div sc-right">
+                                    <a class="join_an addActivity" data_Id="@activity.ID"><i class="fa fa-plus"></i>加入</a>
+                                    <a class="see-an activity-detailied" data_Id="@activity.ID"><i class="fa fa-eye"></i>查看</a>
+                                </div>
+                            </li>
+                        }
+
+                    }
+                </ul>
+            </div>
+            <!-- 处理翻页器 -->
+            <div>
+                @Html.Partial("~/Views/Common/PagingProcess.cshtml")
+            </div>
+
+        }
+    }
+</div>

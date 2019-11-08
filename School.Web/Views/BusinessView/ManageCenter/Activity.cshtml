@@ -1,0 +1,58 @@
+﻿
+@model IEnumerable<School.ViewModels.GroupOrganization.ActivityTerms.ActivityTermVM>
+@{
+    var pageParameter = ViewBag.PageParameter as School.Common.JsonModels.ListPageParameter;
+}
+<link href="~/css/managerCenter/table_list.css" rel="stylesheet" />
+@*<script src="~/js/managerCenter/activity.js"></script>*@
+<div class="clearfix" style="margin-right:10px">
+    <div>
+        <div>
+            <h5 class="title_per title-in">我的活动</h5>
+            <form class="list-form navbar-right" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="search-activity" placeholder="Search">
+                    <a href="#" class="input-search-activity input-search"><i class="fa fa-search"></i></a>
+                </div>
+            </form>
+        </div>
+        <div id="activityList">
+
+        </div>
+    </div>
+</div>
+
+<script>
+    //分页按钮
+    $(document).on('click', '.page-index', function (e) {
+        e.preventDefault();
+        var pageIndex = $(this).attr("pageGtoup");
+        $('#nncqPageIndex').val(pageIndex);
+        if ($(this).parent('li').attr("class") == "disabled") {
+            return;
+        }
+        ActivityList();
+    })
+
+
+    // 处理分页器响应
+    function gotoPage(pageIndex) {
+        var pageIndex = $(this).attr("pageGtoup");
+        $('#nncqPageIndex').val(pageIndex);
+        gotoList();
+    };
+
+    // 处理排序响应
+    function gotoSort(sortPropertyName, sortID) {
+        var sortStatus = $('#nncqSortDesc').val();  // 获取当前的排序形式
+        if (sortStatus == 'Default') {
+            document.getElementById(sortID).innerHTML = '<span aria-hidden="true" class="glyphicon glyphicon-chevron-down" style="color:white"></span>';
+            $('#nncqSortDesc').val('')
+
+        } else {
+            document.getElementById(sortID).innerHTML = '<span aria-hidden="true" class="glyphicon glyphicon-chevron-up" style="color:white"></span>';
+            $('#nncqSortDesc').val('Default')
+        }
+        $('#nncqSortProperty').val(sortPropertyName)
+    };
+</script>

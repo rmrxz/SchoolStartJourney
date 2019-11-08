@@ -1,0 +1,54 @@
+﻿@model IEnumerable<School.ViewModels.GroupOrganization.AnAssociationVM>
+@{
+    var user = User.Claims.FirstOrDefault();
+}
+<div class="ac-info-images clearfix">
+    <table class="table_list">
+        <thead>
+            <tr>
+                <th>社团名称</th>
+                <th>社长</th>
+                <th>学校</th>
+                <th>创建时间</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+
+                foreach (var item in Model)
+                {
+                    <tr class="@(item.IsDisable ? "" : "isDisable_color")">
+                        <td>
+                            @if (!item.IsDisable)
+                            {
+                                <i class='fa fa-ban' style='color: red'></i>
+                            }
+                            @item.Name
+                        </td>
+                        <td>@item.User.Name</td>
+                        <td>@item.SchoolAddress</td>
+                        <td>@item.CreateDataTime</td>
+                        <td>
+                            <a href="#" class="detailed-anAssociation" data-acId="@item.ID">详细</a>
+                            @{
+                                @if (item.IsDisable)
+                                {
+                                    if (user.Value == item.User.Id)
+                                    {
+                                        <a href="#" class="dissolution-anAssociation" data-acId="@item.ID">解散</a>
+                                    }
+                                    else
+                                    {
+                                        <a href="#" class="out-anAssociation" data-acId="@item.ID">退出</a>
+                                    }
+                                }
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    @Html.Partial("~/Views/Common/PagingProcess.cshtml")
+</div>

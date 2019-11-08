@@ -1,0 +1,370 @@
+﻿@{ 
+    var controller = ViewContext.RouteData.Values["controller"].ToString();
+    var view = ViewContext.RouteData.Values["action"].ToString();
+    var nav= 0;
+    switch (controller)
+    {
+        case "ApplicationUser":
+            nav = 1;
+            break;
+        case "Hobbys":
+            nav = 2;
+            break;
+        case "AnAssociation":
+            nav = 3;
+            break;
+        case "ActivityTerm":
+            nav = 4;
+            break;
+        case "HomeExhibition":
+            nav = 5;
+            break;
+        default:
+            nav = 0;
+            break;
+    }
+}
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>系统管理员：后台管理系统</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet" />
+
+    <link href="~/css/Shared/_Backstage.css" rel="stylesheet" />
+    <link href="~/css/Shared/elegant-icons-style.css" rel="stylesheet" />
+    <link href="~/css/person/person.css" rel="stylesheet" />
+    <link href="~/css/Shared/table_list.css" rel="stylesheet" />
+    <link href="~/css/managerCenter/information_activityDetailed.css" rel="stylesheet" />
+    <link href="~/css/ShoolStart/anAssociations_detailed.css" rel="stylesheet" />
+
+    <script src="~/js/jquery-1.11.1.js"></script>
+
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/lib/bootstrap/dist/js/jquery.nicescroll.js"></script>
+
+    <script src="~/js/nncqCommon.js"></script>
+    <script src="~/lib/jquery.form.js"></script>
+
+    <script src="~/js/scripts.js"></script>
+    @*文件上传样式和js文件*@
+    <link href="~/lib/bootstrap-fileinput-master/css/fileinput.css" rel="stylesheet" />
+    <script src="~/lib/bootstrap-fileinput-master/js/fileinput.js" charset="gbk"></script>
+
+    @*时间插件*@
+    <link href="~/css/Common/borain-timeChoice.css" rel="stylesheet" />
+    <script src="~/js/Common/borain-timeChoice.js"></script>
+    <link href="~/css/Account/font-awesome.css" rel="stylesheet" />
+
+    @*消息提醒*@
+    <link href="~/toastr-master/toastr.min.css" rel="stylesheet" />
+    <script src="~/toastr-master/toastr.min.js"></script>
+    <script src="~/toastr-master/toastr-package.js"></script>
+
+</head>
+
+<body style="background:#f5f5fa">
+    @*头部开始*@
+    <header class="header dark-bg">
+        <div class="toggle-nav">
+            <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"></div>
+        </div>
+
+        <!--logo开始-->
+        <a href="../../ShoolStart" class="logo">校园 <span class="lite">启行</span></a>
+        <!--logo结束-->
+
+        <div class="nav search-row" id="top_menu">
+            <!--  搜索表单开始 -->
+            <ul class="nav top-menu">
+                <li>
+                    <form class="navbar_form_ad">
+                        <a href="#" class="form-ad"></a>
+                        <input class="form-control" placeholder="Search" type="text">
+                    </form>
+                </li>
+            </ul>
+            <!-- 搜索表单结束 -->
+        </div>
+
+        <div class="top-nav notification-row">
+            <!--头部通知栏开始-->
+            <ul class="nav pull-right top-menu">
+
+                <!-- 任务通知开始 -->
+                <li id="task_notificatoin_bar" class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <span class="icon-task-l">
+                            <span class="badge bg-important">4</span>
+                    </a>
+                    <ul class="dropdown-menu extended tasks-bar">
+                        <div class="notify-arrow notify-arrow-blue" style="left:7px"></div>
+                        <li>
+                            <p class="blue">你有4条任务</p>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="task-info">
+                                    <div class="desc">设计计划 </div>
+                                    <div class="percent">90%</div>
+                                </div>
+                                <div class="progress progress-striped">
+                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
+                                        <span class="sr-only">90% Complete (success)</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="task-info">
+                                    <div class="desc">
+                                        项目进度
+                                    </div>
+                                    <div class="percent">90%</div>
+                                </div>
+                                <div class="progress progress-striped">
+                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
+                                        <span class="sr-only">90% Complete (warning)</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="task-info">
+                                    <div class="desc">LOGO设计</div>
+                                    <div class="percent">100%</div>
+                                </div>
+                                <div class="progress progress-striped">
+                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                        <span class="sr-only">100% Complete (danger)</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="task-info">
+                                    <div class="desc">移动APP</div>
+                                    <div class="percent">0%</div>
+                                </div>
+                                <div class="progress progress-striped active">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                                        <span class="sr-only">0% Complete</span>
+                                    </div>
+                                </div>
+
+                            </a>
+                        </li>
+                        <li class="external">
+                            <a href="#">查看所有活动</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- 任务通知结束 -->
+                <!-- 邮箱信息通知开始-->
+                <li id="mail_notificatoin_bar" class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <i class="icon-envelope-l"></i>
+                        <span class="badge bg-important">3</span>
+                    </a>
+                    <ul class="dropdown-menu extended inbox">
+                        <div class="notify-arrow notify-arrow-blue" style="left:7px"></div>
+                        <li>
+                            <p class="blue">你有3封邮箱</p>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="photo"><img alt="avatar" src="./img/avatar-mini2.jpg"></span>
+                                <span class="subject">
+                                    <span class="from">管理员1</span>
+                                    <span class="time">5 mins</span>
+                                </span>
+                                <span class="message">
+                                    嗨，下一个项目计划是什么？
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="photo"><img alt="avatar" src="./img/avatar-mini3.jpg"></span>
+                                <span class="subject">
+                                    <span class="from">管理2</span>
+                                    <span class="time">2 hrs</span>
+                                </span>
+                                <span class="message">
+                                    我想买这个管理模板。
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="photo"><img alt="avatar" src="./img/avatar-mini4.jpg"></span>
+                                <span class="subject">
+                                    <span class="from">用户1</span>
+                                    <span class="time">1 day</span>
+                                </span>
+                                <span class="message">
+                                    图标字体很棒。
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">查看所有的消息</a>
+                        </li>
+                    </ul>
+                </li>
+                <!--  邮箱信息通知结束 -->
+                <!-- 警报通知开始-->
+                <li id="alert_notificatoin_bar" class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+
+                        <i class="icon-bell-l"></i>
+                        <span class="badge bg-important">4</span>
+                    </a>
+                    <ul class="dropdown-menu extended notification">
+                        <div class="notify-arrow notify-arrow-blue" style="left:7px"></div>
+                        <li>
+                            <p class="blue">你有4条警报</p>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="label label-primary"><i class="icon_profile"></i></span>
+                                朋友的请求
+                                <span class="small italic pull-right">5 mins</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="label label-warning"><i class="icon_pin"></i></span>
+                                具体位置
+                                <span class="small italic pull-right">50 mins</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="label label-danger"><i class="icon_book_alt"></i></span>
+                                项目3完成。
+                                <span class="small italic pull-right">1 hr</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="label label-success"><i class="icon_like"></i></span>
+                                很欣赏你的工作。
+                                <span class="small italic pull-right"> Today</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">查看所有的通知</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- 警报通知结束-->
+                <!-- 用户登录下拉开始-->
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <span class="profile-ava">
+                            <img src="~/images/home/psb.jpg" />
+                        </span>
+                        <span class="username">lin Zhang</span>
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu extended logout" style="width: 130px !important;left: -30px;">
+                        <div class="log-arrow-up"></div>
+                        <li class="eborder-top">
+                            <a href="#"><i class="icon_profile"></i>我的个人资料</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="icon_mail_alt"></i>收件箱
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="icon_clock_alt"></i> 时间表</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="icon_chat_alt"></i> 聊天</a>
+                        </li>
+                        <li>
+                            <a href="login.html"><i class="icon_key_alt"></i> 注销</a>
+                        </li>
+                        <li>
+                            <a href="documentation.html"><i class="icon_key_alt"></i> 文档</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- 用户登录下拉结束 -->
+            </ul>
+            <!-- 头部通知栏结束-->
+        </div>
+    </header>
+    <!--头部结束-->
+    <!--导航栏开始-->
+    <aside>
+        <div id="sidebar" class="nav-collapse ">
+            <!-- 工具条菜单开始-->
+            <ul class="sidebar-menu">
+                <li class="active sc-title">
+                    <a class="" href="../../Home/Index">
+                        <i class="icon_house_alt"></i>
+                        <span>主页</span>
+                    </a>
+                </li>
+                <li class="sub-menu sc-title">
+                    <a href="javascript:;" class="">
+                        <i class="fa fa-user-o"></i>
+                        <span>用户业务管理</span>
+                        <span class="menu-arrow arrow_carrot-down"></span>
+                    </a>
+                    <ul class="sub" style="@(nav==1||nav==2?"display: block;":"")">
+                        <li><a class="@(nav==1?"nav-color-click":"")"  href="../../ApplicationUser/Index">查看所有用户</a></li>
+                        <li><a class="@(nav==2?"nav-color-click":"")" href="../../Hobbys/Index">爱好</a></li>
+                    </ul>
+                </li>
+                <li class="sub-menu sc-title">
+                    <a href="javascript:;" class="">
+                        <i class="fa fa-users"></i>
+                        <span>社团管理</span>
+                        <span class="menu-arrow arrow_carrot-down"></span>
+                    </a>
+                    <ul class="sub" style="@(nav==3?"display: block;":"")">
+                        <li><a class="@(nav==3?"nav-color-click":"")" href="../../AnAssociation/Index">查看所有社团</a></li>
+                    </ul>
+                </li>
+                <li class="sub-menu sc-title">
+                    <a href="javascript:;" class="">
+                        <i class="fa fa-bullseye"></i>
+                        <span>活动管理</span>
+                        <span class="menu-arrow arrow_carrot-down"></span>
+                    </a>
+                    <ul class="sub" style="@(nav==4?"display: block;":"")">
+                        <li><a class="@(nav==4?"nav-color-click":"")"  href="../../ActivityTerm/Index">查看所有活动</a></li>
+                    </ul>
+                </li>
+                <li class="sub-menu sc-title">
+                    <a href="javascript:;" class="">
+                        <i class="fa fa-bullseye"></i>
+                        <span>其他业务</span>
+                        <span class="menu-arrow arrow_carrot-down"></span>
+                    </a>
+                    <ul class="sub" style="@(nav==5?"display: block;":"")">
+                        <li><a class="@(nav==5?"nav-color-click":"")"  href="../../HomeExhibition/Index">首页轮播图设置</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- 工具条菜单结束-->
+        </div>
+    </aside>
+    <!--导航栏结束-->
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main dataBody">
+        @RenderBody()
+    </div>
+
+</body>
+</html>

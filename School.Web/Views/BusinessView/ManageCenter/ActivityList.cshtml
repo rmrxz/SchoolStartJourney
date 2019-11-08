@@ -1,0 +1,55 @@
+﻿@model IEnumerable<School.ViewModels.GroupOrganization.ActivityTerms.ActivityTermVM>
+@{
+    var user = User.Claims.FirstOrDefault();
+}
+<div class="ac-info-images clearfix">
+    <table class="table_list">
+        <thead>
+            <tr>
+                <th>名称</th>
+                <th>创建者</th>
+                <th>地址</th>
+                <th>状态</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+
+                foreach (var item in Model)
+                {
+                    <tr class="@(item.IsDisable?"":"isDisable_color")">
+                        <td>
+                            @if (!item.IsDisable)
+                            {
+                                <i class='fa fa-ban' style='color: red'></i>
+                            }
+                            @item.Name
+                        </td>
+                        <td>@(item.AnAssociation != null ? item.AnAssociation.Name : item.User.Name)</td>
+                        <td>@item.Address</td>
+                        <td class="@(item.IsDisable?"td_status":"isDisable_red")">@(item.IsDisable?item.Status.ToString():"禁止")</td>
+                        <td>
+                            <a href="#" class="detailed-activity" data-acId="@item.ID">详细</a>
+                            @{
+                                @if (item.IsDisable)
+                                {
+                                    if (user.Value == item.User.Id && item.Status.ToString() == "未开始")
+                                    {
+                                        <a href="#" class="cancel-activity" data-acId="@item.ID">取消</a>
+                                    }
+                                    else if (item.Status.ToString() == "未开始")
+                                    {
+                                        <a href="#" class="out-activity" data-acId="@item.ID">退出</a>
+                                    }
+                                }
+                            }
+
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    @Html.Partial("~/Views/Common/PagingProcess.cshtml")
+</div>

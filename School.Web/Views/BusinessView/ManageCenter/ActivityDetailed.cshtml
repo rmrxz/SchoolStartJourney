@@ -1,0 +1,58 @@
+﻿@model School.ViewModels.GroupOrganization.ActivityTerms.ActivityTermVM
+<link href="~/css/managerCenter/information_activityDetailed.css" rel="stylesheet" />
+<div>
+    <div class="operationDescription">
+        <h5 class="title_per title-in"><a href="#" id="detailed-activity" data-acId="@Model.ID">活动信息</a> </h5>
+        <h5 class="title_per title-in"><a href="#" id="detailed-activity-images" data-acId="@Model.ID">活动图片</a></h5>
+        <h5 class="title_per title-in"><a href="#" id="detailed-activity-member" data-acId="@Model.ID">活动成员</a></h5>
+    </div>
+    <div class="ac-info-images clearfix">
+        <div class="activity-info">
+            <label for="">活动名称：</label>
+            <span>@Model.Name</span>
+        </div>
+        <div class="activity-info">
+            <label for="">活动负责人：</label>
+            <span>@(Model.AnAssociation != null ? Model.AnAssociation.Name : Model.User.Name)</span>
+        </div>
+        <div class="activity-info">
+            <label for="">联系电话：</label>
+            <span>@Model.User.MobileNumber</span>
+        </div>
+        <div class="activity-info">
+            <label for="">联系人QQ：</label>
+            <span>@Model.User.QQ</span>
+        </div>
+        <div class="activity-info">
+            <label for="">活动地点：</label>
+            <span>@Model.Address</span>
+        </div>
+        <div class="activity-info">
+            <label for="">上限人数：</label>
+            <span>@Model.MaxNumber</span>
+        </div>
+        <div class="activity-info">
+            <label for="">报名截止时间：</label>
+            <span>@Model.SignDataTime</span>
+        </div>
+        <div class="activity-info">
+            <label for="">活动时间：</label>
+            <span>@Model.StartDataTime 至 @Model.EndDataTime</span>
+        </div>
+        <div class="activity-info">
+            <label for="">费用：</label>
+            <span>@Model.Expenses</span>
+        </div>
+        <div class="activity-info">
+            <label for="">活动介绍：</label>
+            <span>@Model.Description</span>
+        </div>
+        <div class="info-operation-bottom head-portrait-an">
+            @if (Model.User.Id == User.Claims.FirstOrDefault().Value && Model.Status.ToString() == "未开始")
+            {
+                <button class="tn-head-portrait editActivity" data-acId="@Model.ID">更改</button>
+            }
+
+        </div>
+    </div>
+</div>

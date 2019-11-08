@@ -1,0 +1,20 @@
+﻿.foonter-d {
+    margin-top: 60px;
+    background-color: #bdbdbd;
+    padding: 20px 0;
+}
+
+    .foonter-d p {
+        color: #645d5d;
+        font-size: 16px;
+        text-align: center;
+    }
+
+        .foonter-d p a {
+            color: #19898e;
+            font-size: 16px;
+        }
+
+            .foonter-d p a :hover {
+                color: rgb(9, 73, 76);
+            }

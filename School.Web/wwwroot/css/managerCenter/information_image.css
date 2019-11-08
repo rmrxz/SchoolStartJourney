@@ -1,0 +1,62 @@
+.Mask
+{
+    display: none;
+    width: 100%;
+    z-index: 100;
+    background-color: rgba(0,0,0,0.4);
+    position: fixed;
+    top: 0;
+    left:0;
+    text-align: center;
+}
+.mask-image img
+{
+
+}
+
+.head-portrait-change {
+    display: inline-block;
+    float: left;
+}
+.head-portrait
+{
+    padding: 20px;
+    display: table;
+    /*background: #eee;*/
+}
+.head-portrait img{
+    width: 160px;
+    height: 160px;
+}
+.head-portrait-an
+{
+    width: 100%!important;
+}
+.tn-head-portrait
+{
+    Letter-spacing:2px!important;
+}
+.head-file
+{
+    display: none;
+}
+.preview {
+    display: inline-block;
+    position: relative;
+    margin: 30px 0px 0 70px;
+}
+
+    .preview a {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: inline-block;
+        padding: 6px 10px;
+        background-color: rgba(0,0,0,0.3);
+        color: #fff;
+    }
+
+    .preview img {
+        width: 400px;
+        height: 400px;
+    }

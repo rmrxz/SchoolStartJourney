@@ -1,0 +1,306 @@
+.nav-left-setting {
+    width: 20%;
+    box-sizing: border-box;
+}
+
+.hs-manager {
+    width: 100%;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+.hs-info {
+    font-size: 14px;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+}
+
+    .hs-info i {
+        margin-right: 4px;
+    }
+
+.hs-manager .info-nav-li {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 10px;
+}
+
+    .hs-manager .info-nav-li a {
+        text-align: center;
+        display: block;
+        padding: 6px 0;
+        font-size: 14px;
+        color: #295c9d;
+        /*font-weight: bold;*/
+    }
+
+        .hs-manager .info-nav-li a:hover {
+            background: #eee;
+        }
+
+.info-operation-bottom {
+    padding: 10px 0;
+    width: 52%;
+    text-align: center;
+}
+
+    .info-operation-bottom button {
+        padding: 6px 20px;
+        font-size: 16px;
+        border: none;
+        background: #72b842;
+        color: #fff;
+        Letter-spacing: 8px;
+        font-weight: bold;
+    }
+
+        .info-operation-bottom button:hover {
+            background: #65a03c;
+        }
+
+/*基本信息样式开始*/
+
+.info-setting {
+    display: inline-block;
+    width: 80%;
+    min-height: 540px;
+    border-left: 1px solid #eee;
+    box-sizing: border-box;
+    padding-left: 2%;
+    padding-bottom: 50px;
+}
+
+.operationDescription {
+    border-bottom: 1px solid #eee;
+    margin-right: 20px;
+}
+
+.title-in {
+    background: none;
+    border: none;
+    display: inline-block;
+    font-size: 16px;
+    padding-left: 0;
+    color: #444444;
+    padding-top: 20px;
+    /*border-bottom: 1px solid #eee;*/
+}
+
+    .title-in a {
+        display: inline-block;
+        font-size: 16px;
+        color: #444444;
+        font-weight: bold;
+    }
+        .title-in a:hover {
+            text-decoration: underline;
+        }
+
+.info-height {
+    margin-top: 10px;
+}
+
+.info-fill-in {
+    padding: 0 4px 10px;
+    /*margin: 0px 18px ;*/
+    position: relative;
+}
+
+.info-label {
+    display: inline-block;
+    color: #000;
+    font-size: 14px;
+    width: 12%;
+    text-align: left;
+}
+
+.operation-box {
+    display: inline-block;
+    width: 40%;
+    position: relative;
+    border-bottom: 1px solid #c1c1c1;
+}
+
+.operation-color {
+    position: absolute;
+    bottom: -1px;
+    width: 0%;
+    transition: 0.5s;
+    -o-transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+}
+
+    .operation-color:before {
+        content: " ";
+        border-bottom: 2px solid #00d9e2;
+        width: 100%;
+        margin-left: -4%;
+        display: inline-block;
+        position: absolute;
+        bottom: 0;
+    }
+
+.input-required {
+    border: none;
+    height: 36px;
+    width: 100%;
+    max-width: 100%;
+    /*border-bottom: 1px solid #ccc;*/
+    outline: none;
+    padding: 6px 8px;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #818181;
+}
+
+.input-cue {
+    color: red;
+    font-size: 14px;
+    margin-left: 30px;
+    display:none
+}
+
+.selsect-re {
+    height: 32px;
+    line-height: 32px;
+    padding-left: 2px;
+    width: 41%;
+}
+
+/*基本信息样式结束*/
+
+/*爱好样式开始*/
+.per-hobby {
+    border: 1px solid #eee;
+    background: #FCFCFC;
+    width: 98%;
+    min-height: 500px;
+}
+
+.title-ho {
+    /*color: #444444;*/
+    padding: 10px 20px;
+}
+
+.hobby-list {
+    width: 82%;
+    margin: auto;
+    box-sizing: border-box;
+}
+
+.ch-ho-p {
+    font-size: 12px;
+}
+
+    .ch-ho-p a {
+        color: #295c9d;
+        margin-left: 10px;
+    }
+
+        .ch-ho-p a:hover {
+            text-decoration: underline;
+        }
+
+.ho-choose {
+    display: block;
+    border: 1px solid #DADADA;
+    background: #fff;
+    margin-top: 10px;
+    padding: 2px;
+    min-height: 26px;
+}
+
+    .ho-choose li {
+        float: left;
+        font-size: 12px;
+        padding: 2px;
+        margin: 2px;
+        background: #eee;
+        cursor: pointer;
+    }
+
+.ho-see {
+    margin-top: 10px;
+}
+
+    .ho-see li:before {
+        content: "";
+        display: table;
+    }
+
+    .ho-see li:after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    .ho-see li {
+        margin: 8px;
+        float: left;
+    }
+
+        .ho-see li img {
+            display: inline-block;
+            float: left;
+            width: 48px;
+            height: 48px;
+        }
+
+.ho-ma {
+    display: inline-block;
+    margin-left: 4px;
+}
+
+    .ho-ma a {
+        display: inline-block;
+        font-size: 12px;
+        color: #26709A;
+    }
+
+        .ho-ma a:hover {
+            text-decoration: underline;
+        }
+/*爱好样式结束*/
+
+
+.radio-input {
+    display:inline-block;
+}
+
+    .radio-input input {
+        width: 20px;
+        padding: 4px 4px;
+        height: 16px;
+        color: #32c5d2 !important;
+    }
+
+    /*.radio-input  .checkedo_true:before {
+        content: "";
+        content: "";
+        width: 10px;
+        height: 10px;
+        border: 1px solid red;
+    }*/
+
+.input-cue {
+    position: absolute;
+    top: 10px;
+    font-size: 12px;
+    color: red;
+}
+
+.ri-cl {
+    display: inline-block;
+}
+.notificationNumber {
+    color: #fff;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: #ff6000;
+    border-radius: 20px;
+    font-weight:bold;
+}

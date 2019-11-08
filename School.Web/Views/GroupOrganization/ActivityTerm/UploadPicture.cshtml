@@ -1,0 +1,57 @@
+﻿
+@{
+    Layout = "_BackstageManagementLayout";
+}
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="clearfix" style="padding:20px 30px">
+    <a href="../../ActivityTerm/Index" class="btn btn-success pull-right sc-color">返回列表</a>
+</div>
+<div class="products">
+    <div class="container kv-main">
+        <form enctype="multipart/form-data" asp-controller="AnAessciation" asp-action="UploadPhone">
+            <input type="hidden" name="Id" id="Id" value="@ViewBag.Id" />
+            <div class="form-group">
+                <input id="file-1" type="file" data-language="zh" multiple class="file" data-overwrite-initial="false" data-min-file-count="1">
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    $("#file-1").fileinput({
+        language: 'zh',
+        //contentType: "charset=UTF-8",
+        showPreview: true, //是否显示预览
+        uploadsync: true,//异步上传
+        uploadUrl: '../../ActivityTerm/SavaUploaPhone/?id=' + $("#Id").val(),
+        allowedFileExtensions: ['jpg', 'png', 'gif'],
+        overwriteInitial: false,
+        maxFileSize: 1000,
+        maxFileCount: 15,//最大上传图片数量
+        showPreview: true,//是否显示文件预览
+        slugCallback: function (filename) {
+            return filename.replace('(', '_').replace(']', '_');
+        },
+    });
+
+    //$('#file-1').on('filepreupload', function (event, data, previewId, index) {
+    //    $.ajax({
+    //        cache: false,
+    //        type: 'post',
+    //        async: false,
+    //        url: '../../AnAssociation/SavaUploaPhone/?id=' + $("#Id").val(),
+    //        beforeSend: function () {
+    //        }
+    //    }).done(function (data) {
+    //        if (data.isOK) {
+    //            alert("OK");
+    //        }
+    //        else {
+    //            alert(data.messsage)
+    //         }
+    //    }).fail(function () {
+    //        alert("连接后台失败！");
+    //    }).always(function () {
+    //    });
+    //});
+</script>

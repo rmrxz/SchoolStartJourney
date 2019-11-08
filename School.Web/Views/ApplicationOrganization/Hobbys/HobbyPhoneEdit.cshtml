@@ -1,0 +1,24 @@
+﻿@model School.ViewModels.ApplicationOrganization.HobbyVM
+@{
+    Layout = "_emptyLayout";
+ }
+
+<div>
+    <link href="~/css/managerCenter/information_image.css" rel="stylesheet" />
+    <div class="clearfix info-setting">
+        <div>
+            <div class="per-hobby">
+                <div class=" head-portrait-change" style="text-align: center;float: none;display:block">
+                    <a href="#" class="head-portrait tn-hobby-phone" style="display: inline;"><img style="border: 1px solid #d8d8d8;" src="@(Model.Avatar==null?"/images/Common/Default/no_image.png":Model.Avatar.UploadPath)" alt=""></a>
+                    <input type="file" class="head-file" style="display:none">
+                    <div class="info-operation-bottom head-portrait-an" style="margin-top:30px">
+                        <button class="save-hobby-phone" data_Id="@Model.ID">保存</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="Mask">
+        <a href="#" class="mask-image"><img src="" alt=""></a>
+    </div>
+</div>

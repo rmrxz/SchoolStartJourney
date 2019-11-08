@@ -1,0 +1,136 @@
+.an-data
+{
+
+}
+.an-info
+{
+    padding: 4px 14px;
+    border: none;
+}
+
+.de_ac_info a
+{
+    padding: 4px 10px;
+    background: #72b842;
+    font-weight: bold;
+    color: #fff;
+    transition: 0.5s;
+    -o-transition: 0.5s;
+    -webkit-transition: 0.5s;
+}
+.de_ac_info a:hover
+{
+    background: #5aa924;
+}
+.title_an
+{
+    padding: 14px 10px;
+    border-bottom: 1px solid #eee;
+    box-shadow: 0px 2px 0px #f7f7f7;
+}
+.title_an p
+{
+    font-size: 16px;
+    color: #000;
+}
+.an-association
+{
+    padding: 0 10px;
+    margin-top: 10px;
+}
+.an-info-con {
+    float: left;
+}
+.an-info-con
+{
+    width: 23%;
+    margin: 0 1% 20px;
+    box-sizing: border-box;
+
+}
+.an-image
+{
+    position: relative;
+}
+.an-info-con img
+{
+    width:100%;
+    height: 160px;
+    display: inherit;
+}
+.title h3
+{
+    line-height: 22px;
+    margin: 3px 0px 0px 0px;
+    padding: 0px 10px;
+}
+    .title h3 a {
+        -webkit-transition: color 0.1s ease-in;
+        -moz-transition: color 0.1s ease-in;
+        -o-transition: color 0.1s ease-in;
+        transition: color 0.1s ease-in;
+        color: #2d2d2d;
+        font-size: 18px;
+        font-weight: bold;
+        display: block;
+        height: 22px;
+        overflow: hidden;
+    }
+.title h3 a:hover
+{
+    text-decoration: underline;
+}
+.founder
+{
+    font-size: 14px!important;
+    color: #186063;
+    /*padding: 0 10px;*/
+    display:table;
+    font-weight: 100!important;
+
+}
+.number
+{
+    padding:0 10px;
+}
+.number .per_num_str
+{
+    font-size: 16px;
+    color: #000;
+    /*font-weight: bold;*/
+}
+.number .per_number
+{
+    font-size: 16px;
+    color: red;
+    font-weight: 100;
+}
+.join_see_div
+{
+    padding: 0 10px;
+}
+.join_see_div a
+{
+    display: inline-block;
+    margin: 0 2px;
+    padding: 0 2px;
+    font-size: 12px;
+    cursor: pointer;
+}
+.join_see_div a:hover
+{
+    background: #72b842;
+    border-radius: 4px;
+    color: #fff;
+}
+
+.join_see_div a i
+{
+    display: inline-block;
+    margin-right: 2px;
+    font-size: 14px;
+}
+.de_ac_info p span
+{
+    color: red;
+}

@@ -1,0 +1,50 @@
+﻿@model School.ViewModels.GroupOrganization.AnAssociationVM
+<link href="~/css/managerCenter/information_activityDetailed.css" rel="stylesheet" />
+<div>
+    <div class="operationDescription">
+        <h5 class="title_per title-in"><a href="" id="detailed-anAssociation" data-acId="@Model.ID">社团信息</a> </h5>
+        <h5 class="title_per title-in"><a href="" id="detailed-anAssociation-images" data-acId="@Model.ID">社团图片</a></h5>
+        <h5 class="title_per title-in"><a href="" id="detailed-anAssociation-members" data-acId="@Model.ID">社团成员</a></h5>
+    </div>
+    <div class="ac-info-images clearfix">
+        <ul id="activityImages">
+            @{
+                if (Model.Images.Count() > 0)
+                {
+                    foreach (var item in Model.Images)
+                    {
+                        <li>
+                            <a href="#" class="ac-image-op">
+                                @{
+                                    if (Model.User.Id == User.Claims.FirstOrDefault().Value)
+                                    {
+                                        <i class="fa fa-times delete-anAssociation-image" data-image-Id="@item.ID"></i>
+                                    }
+                                }
+                                <img src="@item.UploadPath" alt="">
+                            </a>
+                        </li>
+                    }
+                }
+                else if (Model.User.Id != User.Claims.FirstOrDefault().Value)
+                {
+                    <li>
+                        <a href="#" class="ac-image-op">
+                            <img src="/images/Common/Default/no_image.png" alt="">
+                        </a>
+                    </li>
+                }
+            }
+            @if (Model.User.Id == User.Claims.FirstOrDefault().Value)
+            {
+                <li>
+                    <input type="file" class="add-anAssociation-images-file" multiple="multiple" name="name" value="" style="display:none" />
+                    <a href="#" class="add-images add-anAssociation-images" id="add-anAssociation-images"><i class="fa fa-plus-circle"></i></a>
+                </li>
+            }
+
+        </ul>
+    </div>
+</div>
+
+

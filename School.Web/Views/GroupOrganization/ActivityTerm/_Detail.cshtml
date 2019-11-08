@@ -1,0 +1,257 @@
+﻿@model School.ViewModels.GroupOrganization.ActivityTerms.ActivityTermVM
+@{ 
+    var menber = Model.Members;
+}
+@*<div>
+        <a href="../../ActivityTerm/Index" class="btn btn-success pull-right">返回列表</a>
+        <h2 class="sub-header" style="margin-bottom:20px">查看活动的数据</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-3">名称：</div>
+                <div class="col-md-9">@Model.Name</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">活动负责人：</div>
+                <div class="col-md-9">@Model.User.Name</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">活动举办方：</div>
+                <div class="col-md-9">@(Model.AnAssociation != null ? Model.AnAssociation.Name : null)</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">活动地点：</div>
+                <div class="col-md-9">@Model.Address</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">上限人数：</div>
+                <div class="col-md-9">@Model.MaxNumber</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">报名参与时间：</div>
+                <div class="col-md-9">@Model.SignDataTime</div>
+            </div>  <div class="row">
+                <div class="col-md-3">活动报名结束时间：</div>
+                <div class="col-md-9">@Model.EndDataTime</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">活动开始时间：</div>
+                <div class="col-md-9">@Model.StartDataTime</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">费用：</div>
+                <div class="col-md-9">@Model.Expenses</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">活动介绍：</div>
+                <div class="col-md-9">@Model.Description</div>
+            </div>
+        </div>
+    </div>*@
+@*<div class="row" style="border-top:1px solid #eee;margin-top:40px;padding:30px">*@
+@*<div class="operationDescription">
+        <h5 class="title_per title-in"><a href="#" id="detailed-activity-images" data-acId="@Model.ID">活动图片</a></h5>
+        <h5 class="title_per title-in"><a href="#" id="detailed-activity-member" data-acId="@Model.ID">活动成员</a></h5>
+    </div>*@
+@*<ul class="clearfix">
+            @{
+                if (Model.Images.Count() > 0)
+                {
+                    foreach (var item in Model.Images)
+                    {
+                        <li class="pull-left">
+                            <a href="#" class="ac-image-op" style="display:inline-block;width:340px;height:300px;padding: 4px 4px;">
+                                @{ if (Model.User.Id.ToString() == User.Claims.FirstOrDefault().Value)
+                                    {
+                                        <i class="glyphicon glyphicon-remove delete-activity-image" style="z-index:3;right: 4px;top:4px" data-image-Id="@item.ID"></i>
+                                    }
+                                }
+                                <img style="height:100%;width:100%;" src="@item.UploadPath" alt="">
+                            </a>
+                        </li>
+                    }
+                }
+                else
+                {
+                    <li>
+                        <a href="#" class="ac-image-op" style="display:inline-block;width:340px;height:300px">
+                            <img class="col-md-12" style="height:100% ;padding:0 10px" src="/images/Common/Default/no_image.png" alt="">
+                        </a>
+                    </li>
+                }
+            }
+        </ul>
+    </div>*@
+
+<!-- container section start -->
+<section id="" class="">
+    <!--main content start-->
+    <!--main content start-->
+    <section id="">
+        <section class="">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="page-header" style="display:inline-block"><i class="fa fa-user-md"></i>活动详情</h3>
+                    <a href="" class="btn btn-success pull-right sc-color activity-list" data-pageIndex="">返回列表</a>
+                </div>
+            </div>
+            <div class="row">
+                <!-- profile-widget -->
+                <div class="col-lg-12">
+                    <div class="profile-widget profile-widget-info">
+                        <div class="panel-body">
+                            <div class="col-lg-2 col-sm-2">
+                                <div class="follow-ava">
+                                    <img src="@(Model.Avatar!=null?Model.Avatar.UploadPath:"/images/Common/Default/no_image.png")" )" alt="" style="width: 120px;height:120px">
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-sm-4 follow-info">
+                                <p><i style="font-style: normal;">活动：</i>@Model.Name</p>
+                                <p><i style="font-style: normal;">负责人：</i>@Model.User</p>
+                                <p class=""><i style="font-style: normal;">地址：</i>@Model.Address</p>
+                                <p class=""><i style="font-style: normal;">上限人数：</i>@Model.MaxNumber</p>
+                            </div>
+                            <div class="col-lg-3 col-sm-4 follow-info">
+                                <p><i style="font-style: normal;">报名结束时间：</i>@Model.SignDataTime</p>
+                                <p class=""><i style="font-style: normal;">活动时间：</i>@Model.StartDataTime 至 @Model.EndDataTime</p>
+                                <p><i style="font-style: normal;">描述：</i>@Model.Description</p>
+                            </div>
+                            <div>
+                                <div class="col-lg-2 col-sm-6 follow-info weather-category">
+                                    <ul>
+                                        <li class="active">
+                                            <i class="fa-2x">@ViewBag.MemberNumber</i><br>
+                                            成员数量
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <div class="col-lg-2 col-sm-6 follow-info weather-category">
+                                    <ul>
+                                        <li class="active">
+                                            <i class="fa-2x">@ViewBag.CommentNumber</i><br>
+                                            评论数量
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- page start-->
+            <div class="row">
+                <div class="col-lg-12">
+                    <section class="panel">
+                        <header class="panel-heading tab-bg-info">
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a data-toggle="tab" href="#recent-activity">
+                                        <i class="icon-home"></i>
+                                        活动成员
+                                    </a>
+                                </li>
+                                <li>
+                                    <a data-toggle="tab" href="#profile">
+                                        <i class="icon-user"></i>
+                                        活动图片
+                                    </a>
+                                </li>
+                                <li class="ac_CommentList">
+                                    <a data-toggle="tab" href="#edit-profile">
+                                        <i class="icon-envelope"></i>
+                                        活动评论
+                                    </a>
+                                </li>
+                            </ul>
+                        </header>
+                        <div class="panel-body">
+                            <div class="tab-content">
+                                <div id="recent-activity" class="tab-pane active">
+                                    <section class="panel">
+                                        <ul class="clearfix" style="margin-top:30px">
+                                            @{
+                                                if (menber.Count() != 0)
+                                                {
+                                                    foreach (var item in menber)
+                                                    {
+                                                        <li class="col-md-2">
+                                                            <div class="ac-per-info clearfix">
+                                                                <a href="#" class="pull-left ac-image-op image-a">
+                                                                    <img src="@(item.User.Avatar != null? item.User.Avatar.UploadPath:"/images/Common/Default/head_portrait.gif")" alt="">
+                                                                    <i class="fa fa-times delete-user-friend" data-user-id="@item.User.Id"></i>
+                                                                </a>
+                                                                <div class="ac-per-info-add">
+                                                                    <h4 style="margin: 0;padding:0px">@item.User.Name</h4>
+                                                                    <p style="margin: 0;padding:0px">@(item.User.Sex?"男":"女")</p>
+                                                                    <a href="#" class="seeUserDetailed" data_Id="@item.User.Id"><i class="fa fa-plus"></i>查看</a>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <div style="margin-top:20px">
+                                                        <p style="font-size: 20px; margin-left: 30px;">您还没有添加任何好友！！</p>
+                                                    </div>
+                                                }
+                                            }
+                                        </ul>
+                                    </section>
+                                    <section>
+                                        <div class="row">
+                                        </div>
+                                    </section>
+                                </div>
+                                <div id="profile" class="tab-pane">
+                                    <div class="row" style="border-top:1px solid #eee;margin-top:40px;padding:30px">
+                                        <ul class="clearfix">
+                                            @{
+                                                if (Model.Images.Count() > 0)
+                                                {
+                                                    foreach (var item in Model.Images)
+                                                    {
+                                                        <li class="pull-left">
+                                                            <a href="#" class="ac-image-op" style="display:inline-block;width: 260px;height:240px">
+                                                                <i class="fa fa-times delete-anAssociation-image" style="right: 10px;z-index: 9;" data-image-Id="@item.ID"></i>
+                                                                <img class="col-md-12" style="height:100%;padding:0 10px" src="@item.UploadPath" alt="">
+                                                            </a>
+                                                        </li>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <li>
+                                                        <a href="#" class="ac-image-op" style="display:inline-block;width:260px;height:240px">
+                                                            <img class="col-md-12" style="height:100% ;padding:0 10px" src="/images/Common/Default/no_image.png" alt="">
+                                                        </a>
+                                                    </li>
+                                                }
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- profile -->
+                                <!-- edit-profile -->
+                                <div id="edit-profile" class="tab-pane">
+                                    <section class="panel">
+                                        <div class="panel-body bio-graph-info"id="ac_comment">
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- page end-->
+        </section>
+    </section>
+    <!--main content end-->
+</section>
+<!-- container section end -->

@@ -1,0 +1,84 @@
+﻿@model School.ViewModels.GroupOrganization.AnAssociationVM
+@{
+    Layout = "_TemplateInterfaceLayout";
+}
+<!--内容开始-->
+<script src="~/js/BusinessView/AnAssociationView/Index.js"></script>
+<div>
+    <div class="container">
+        <div class="total-content clearfix">
+            <div class="sc-left recommend" id="p_fixed">
+                <div class="per_data sa-margin-none">
+                    <h4 class="title_per">社长</h4>
+                    <div>
+                        <ul>
+                            <li class="de_li">
+                                <div class="de_pa clearfix">
+                                    <div class="de_img sc-left">
+                                        <a href="#"><img src="@Model.User.Avatar.UploadPath" alt=""></a>
+                                    </div>
+                                    <div class="de_ac_info">
+                                        <h4>@Model.User.Name</h4>
+                                        <p>@Model.User.SchoolAddress</p>
+                                        <p>@Model.User.MobileNumber</p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="per_data ">
+                    <h4 class="title_per">管理者</h4>
+                    <div class="clearfix hobby">
+                        <ul class="clearfix sum_up">
+                            @foreach (var item in ViewBag.AnAdmins)
+                            {
+                                <li>
+                                    <a href="#" class="de_head">
+                                        <img src="@item.Avatar.UploadPath" alt="">
+                                        <strong>"@item.Name</strong>
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="sc-right ac-con">
+                <div class="clearfix choice">
+                    <h3>社团内容</h3>
+                    <div class="addAndCancel sc-right">
+                        <a href="#" class="addAnAssociation" data_Id="@Model.ID">参加</a>
+                        <a href="#" class="cancelAnAssociation" data_Id="@Model.ID">退出</a>
+                    </div>
+                </div>
+                <div class="ac-pe-con">
+                    <div class="ac-detailed clearfix">
+                        <a href="#" class="ac-de-href sc-left">
+                            <img src="@Model.Avatar.UploadPath" alt="">
+                        </a>
+                        <div class="ac-de-con sc-right">
+                            <h3 class="ac-de-titel"><a href="#">@Model.Name</a></h3>
+                            <p class="ac-de-time">学校：<span>@Model.SchoolAddress</span></p>
+                            <p class="ac-de-time">创建时间：<span>@Model.CreateDataTime</span></p>
+                            <p class="ac-de-time">成员：<span>@Model.userNum</span></p>
+                            <p class="ac-de-time">历史活动：<span>3</span></p>
+                            <p class="ac-de-time">说明：<span style="color: #333">@Model.Description</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="ac-info-explain">
+                    <div class="ac-de-explain ac-ex-con clearfix">
+                        <a href="#" id="ac-imges-detailed" data_Id="@Model.ID">图片</a>
+                        <a href="#" id="ac-user-detailed" data_Id="@Model.ID">社团成员</a>
+                    </div>
+                    <div class="ac-info-images clearfix" id="otherInfo">
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--内容结束-->

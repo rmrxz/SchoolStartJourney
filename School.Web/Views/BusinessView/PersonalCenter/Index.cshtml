@@ -1,0 +1,186 @@
+﻿@model School.ViewModels.ApplicationOrganization.ApplicationUserVM
+@using School.Entities.ApplicationOrganization
+@{
+    Layout = "_PersonalCenterLayout";
+    System.TimeSpan time = DateTime.Now - Model.RegisterTime;
+    var getDay = Convert.ToInt16(time.TotalDays);
+    System.TimeSpan birthdayTime = DateTime.Now - Model.Birthday;
+    var birthday = Convert.ToInt16((Convert.ToInt32(birthdayTime.TotalDays))/365);
+
+    var user = User.Claims.FirstOrDefault();
+    List<ApplicationUser> interestUsers = ViewBag.InterestUsers;
+}
+<style>
+    .person-add-a {
+        padding: 6px 14px;
+        background: #b1aeae;
+        border-radius: 20px;
+        display: inline-block;
+        position: absolute;
+        right: 30px;
+        top: 10px;
+        color: #fff;
+        font-weight: bold;
+    }
+
+        .person-add-a:hover {
+            background: #9c9c9c;
+        }
+</style>
+<div class="container">
+    <input type="hidden" name="per_user_Id" value="@Model.ID" />
+    <div style="margin:20px 0;position:relative">
+        @{
+            if (user != null)
+            {
+                if (user.Value != Model.ID.ToString())
+                {
+                    <a href="" class="person-add-a add_explicit_person" data_Id="@Model.ID">关注</a>
+                }
+            }
+
+
+        }
+        <div class="portrait sc-left">
+            <a href="#" class="por_a"><img src="@(Model.AvatarPath!=null?Model.AvatarPath.UploadPath:"/images/Common/Default/head_portrait.gif")" class="userUploadPath" alt=""></a>
+        </div>
+        <div class="person-introduce">
+            <div>
+                <a href="#" class="personName" title="查看个人详细资料">@Model.Name</a>
+                <h5 class="autograph">@Model.UserAddress</h5>
+                <div class="per-ah autograph">
+                    <h5 class="son sc-left">校龄：<span>@getDay</span>天</h5>
+                    <span class="son autograph">@Model.Description</span>
+                </div>
+            </div>
+            <div class="navigation nav navbar-nav">
+                <ul>
+                    <li><a class="per-link" href="#">我的活动</a></li>
+                    <li><a class="per-link" href="#">活动记录</a></li>
+                    <li><a class="per-link" href="#">我的社团</a></li>
+                    <li><a class="per-link" href="#">我的相册</a></li>
+                    <li><a class="per-link" href="#">我的评论</a></li>
+                    <li><a class="per-link" href="#">其它</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--内容区开始-->
+<div>
+    <div class="container content_per">
+        <div class="sc-left qx-left">
+            <div class="sum_up clearfix">
+                <ul class="clearfix">
+                    <li>
+                        <a class="in-a activitys-number" href="#">
+                            <h2>@ViewBag.Activitys</h2>
+                            <span>活动记录</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="in-a" href="#">
+                            <h2>@ViewBag.AnAssociations</h2>
+                            <span>我的社团</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="in-a" href="#">
+                            <h2>@ViewBag.Friends</h2>
+                            <span>他关注的</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="per_data">
+                <h4 class="title_per">个人资料</h4>
+                <div>
+                    <ul>
+                        <li class="de_li">
+                            <div class="de_pa">
+                                <div class="de_i sc-left">
+                                    <i class="fa fa-pencil-square-o"></i>
+                                </div>
+                                <div class="de_label">
+                                    <span id="description">@Model.Description</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="de_li">
+                            <div class="de_pa">
+                                <div class="de_i sc-left">
+                                    <i class="fa fa-id-card-o"></i>
+                                </div>
+                                <div class="de_label">
+                                    <span class="de_sp" id="age">@birthday</span><span class="de_sp" id="sex">@(Model.Sex ? "男" : "女")</span><span class="address">@Model.School</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="de_li">
+                            <div class="de_pa no-border-bottom">
+                                <div class="de_i sc-left">
+                                    <i class="fa fa-heart-o"></i>
+                                </div>
+                                <div class="de_label">
+                                    @{
+                                        var count = 0;
+                                        foreach (var hobby in Model.Hobbys)
+                                        {
+                                            <span class="de_sp">@hobby.Name</span>
+                                            count = count + 1;
+                                            if (count == 4)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="per_data" id="p_fixed">
+                <h4 class="title_per">推荐好友</h4>
+                <div class="clearfix hobby">
+                    <ul class="clearfix sum_up">
+                        @{
+                            foreach (var item in interestUsers)
+                            {
+                                <li>
+                                    <a href="#" class="de_head seeUserDetailed" data_Id="@item.Id">
+                                        <img src="@(item.Avatar!=null?item.Avatar.UploadPath:"/images/Common/Default/head_portrait.gif")" alt="">
+                                        <strong style="color:#000000">@item.Name</strong>
+                                    </a>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="qx-right sc-right">
+            <div class="head-titel clearfix">
+                <div class="per-drop-down sc-left">
+                    <a href="#" class="nav-a nac-a-w"><h3 class="sc-left conditionName">我的活动记录</h3><i class="fa fa-angle-down icon-down"></i></a>
+                    <div class="info-set-up selectionConditions ">
+                        <ul>
+                            <li><a href="#" class="info-s-a">我创建的活动</a></li>
+                            <li><a href="#" class="info-s-a">我参与的活动</a></li>
+                            <li><a href="#" class="info-s-a">社团活动记录</a></li>
+                            <li><a href="#" class="info-s-a">个人活动记录</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="operation-icon sc-right"><a href="#" title="刷新记录"><i class="fa fa-refresh"></i></a></div>
+            </div>
+            <div class="activity-record" id="activity-record">
+            </div>
+            <div class="add-more-div" id="addmore_btn"><a class="add-more" id="add-more">加载更多</a></div>
+        </div>
+    </div>
+</div>
+<!--内容区结束-->
+<script>
+    InterestFixed();
+</script>

@@ -1,0 +1,69 @@
+﻿@using School.Common.JsonModels;
+@{
+    Layout = null;
+    var pageGroup = ViewBag.PageGroup as School.Common.ViewModelComponents.PagenateGroup;
+    var pageParameter = ViewBag.PageParameter as School.Common.JsonModels.ListPageParameter;
+}
+<link href="~/css/Common/pageingProcess.css" rel="stylesheet" />
+<div id="pagingt-process">
+    @if (pageGroup.PagenateGroupItem == null)
+    {
+        <div class="center-block"> 根据当前查询的条件，没有任何结果。</div>
+    }
+    else
+    {
+        <nav aria-label="...">
+            <ul class="pagingt-ul clearfix">
+                @if (pageGroup.PagenateGroupItem.FirstIndex == 1)
+                {
+                    <li class="disabled"><a pageGtoup="1" class="page-index" aria-label="第一页"><span aria-hidden="true" class="fa fa-fast-backward"></span></a></li>
+                    <li class="disabled"><a href="#" aria-label="回退一组"><span aria-hidden="true" class="fa fa-backward"></span></a></li>
+                    if (pageGroup.PageIndex >= 2)
+                    {
+                        <li class=""><a href="javascript:gotoPage('@(pageGroup.PageIndex-1)')" pageGtoup="@(pageGroup.PageIndex-1)" class="page-index" aria-label="前一页"><span aria-hidden="true" class="fa fa-caret-left"></span></a></li>
+                    }
+                    else
+                    {
+                        <li class="disabled"><a href="#" aria-label="前一页" class="page-index"><span aria-hidden="true" class="fa fa-caret-left"></span></a></li>
+                    }
+                }
+                else
+                {
+                    <li class=""><a pageGtoup="1" class="page-index" aria-label="第一页"><span aria-hidden="true" class="fa fa-step-backward"></span></a></li>
+                    <li class=""><a pageGtoup="@(pageGroup.PagenateGroupItem.FirstIndex-1)" class="page-index" aria-label="回退一组"><span aria-hidden="true" class="fa fa-backward"></span></a></li>
+                    <li class=""><a pageGtoup="@(pageGroup.PageIndex-1)" class="page-index" aria-label="前一页"><span aria-hidden="true" class="fa fa-caret-left"></span></a></li>
+                }
+                @for (int i = pageGroup.PagenateGroupItem.FirstIndex; i < pageGroup.PagenateGroupItem.LastIndex + 1; i++)
+                {
+                    var activeString = "";
+                    if (i == pageGroup.PageIndex)
+                    {
+                        activeString = "active";
+                    }
+                    <li class="@activeString "><a pageGtoup="@i" class="page-index @(pageGroup.PageIndex==i?"click_a":"")">@i <span class="sr-only">(current)</span></a></li>
+                }
+                @if (pageGroup.PagenateGroupItem.LastIndex == pageGroup.PageAmount)
+                {
+                    if (pageGroup.PageIndex < pageGroup.PageAmount)
+                    {
+                        <li class=""><a pageGtoup="@(pageGroup.PageIndex+1)" class="page-index" aria-label="下一页"><span aria-hidden="false" class="fa fa-caret-right"></span></a></li>
+                    }
+                    else
+                    {
+                        <li class="disabled"><a href="#" aria-label="下一页"><span aria-hidden="true" class="fa fa-caret-right"></span></a></li>
+                    }
+                    <li class="disabled"><a href="#" aria-label="向前一组"><span aria-hidden="true" class="fa fa-forward"></span></a></li>
+                    <li class="disabled"><a href="#" aria-label="最后页"><span aria-hidden="true" class="fa fa-fast-forward"></span></a></li>
+                }
+                else
+                {
+                    <li class=""><a pageGtoup="@(pageGroup.PageIndex+1)" class="page-index" aria-label="后一页"><span aria-hidden="true" class="fa fa-caret-right"></span></a></li>
+                    <li class=""><a pageGtoup="@(pageGroup.PagenateGroupItem.LastIndex+1)" class="page-index" aria-label="向前一组"><span aria-hidden="true" class="fa fa-forward"></span></a></li>
+                    <li class=""><a pageGtoup="@pageGroup.PageAmount" class="page-index" aria-label="最后一条"><span aria-hidden="true" class="fa fa-fast-forward"></span></a></li>
+                }
+
+            </ul>
+        </nav>
+    }
+</div>
+@Html.SGoSetListPageParameter(pageParameter)

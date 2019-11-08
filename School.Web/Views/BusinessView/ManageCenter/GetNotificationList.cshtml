@@ -1,0 +1,38 @@
+﻿@model IEnumerable<School.ViewModels.ApplicationOrganization.MessageNotifications.MessageNotificationVM>
+@{
+    var user = User.Claims.FirstOrDefault();
+}
+<div class="ac-info-images clearfix">
+    <table class="table_list">
+        <thead>
+            <tr>
+                <th style="width:6%">序号</th>
+                <th>通知名</th>
+                <th>通知时间</th>
+                <th  style="width:26%">通知内容</th>
+                <th style="width:28%">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                var OrderNumber = 0;
+                foreach (var item in Model)
+                {
+                    OrderNumber++;
+                    <tr>
+                        <td style="width:6%">@OrderNumber</td>
+                        <td><span style="font-size:12px;color:#ff6000;margin-right:10px;">@(item.isSee?"":"未读")</span>@item.Name</td>
+                        <td>@item.CreateDateTime</td>
+                        <td style="width:26%">@item.Description</td>
+                        <td style="width:28%">
+                            <a href="#" class="detailed-notification" data-acId="@item.ID">详细</a>
+                            <a href="#" class="sign-read-notification" data-acId="@item.ID">标为已读</a>
+                            <a href="#" class="out-notification" data-acId="@item.ID">删除</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    @Html.Partial("~/Views/Common/PagingProcess.cshtml")
+</div>

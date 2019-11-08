@@ -1,0 +1,100 @@
+﻿@model IEnumerable<School.ViewModels.GroupOrganization.CommentVM>
+@{
+    var user = User.Claims.FirstOrDefault();
+    var activityId = "";
+    if (Model.Count() > 0)
+    {
+        activityId = Model.FirstOrDefault().ActivityID.ToString();
+    }
+}
+
+<div class="clearfix comments com-special-sign">
+    <div>
+        <ul>
+            @{
+                if (Model.Count() != 0)
+                {
+                    foreach (var comment in Model)
+                    {
+                        <li>
+                            <div class="clearfix ar-com">
+                                <div class="clearfix sc-left com-in">
+                                    <a href="#" class="sc-left com-image">
+                                        <img src="@(comment.User.Avatar==null?"/images/Common/Default/head_portrait.gif":comment.User.Avatar.UploadPath)" alt="">
+                                    </a>
+                                    <div class="com-per">
+                                        <div class="clearfix">
+                                            <a href="#" class="sc-left">@comment.User.Name :</a>
+                                            <span class="">@comment.Comment</span>
+                                        </div>
+                                        <div class="com-reoly-sign">
+                                            <time class="create-time">@comment.CommentDataTime</time>
+                                            <a href="#" class="ar-reply" title="回复" data_userName="@comment.User.Name" data_acId="@comment.ID"><i class="fa fa-comments-o"></i></a>
+                                            @{
+                                                if (user.Value == comment.User.Id)
+                                                {
+                                                    <a href="#" class="delete-reply" title="删除" data_acId="@comment.ID"><i class="fa fa-trash"></i></a>
+                                                }
+                                            }
+                                            <div class="reply-com">
+
+                                            </div>
+                                        </div>
+                                        <!--子评论区开始-->
+                                        <div class="clearfix comments">
+                                            <ul>
+                                                @{
+                                                    if (comment.CommentChildrens.Count != 0)
+                                                    {
+                                                        foreach (var commentChildrens in comment.CommentChildrens)
+                                                        {
+                                                            <li>
+                                                                <div class="clearfix ar-com">
+                                                                    <div class="clearfix sc-left com-in">
+                                                                        <a href="#" class="sc-left com-image">
+                                                                            <img src="@(@commentChildrens.User.Avatar==null?"/images/Common/Default/head_portrait.gif":commentChildrens.User.Avatar.UploadPath)" alt="">
+                                                                        </a>
+                                                                        <div class="com-per">
+                                                                            <div class="clearfix">
+                                                                                <a href="#" class="sc-left">@commentChildrens.User.Name</a><span style="width: 30px;font-size:14px">回复</span><a href="#">@(commentChildrens.AcceptUser == null ? "" : commentChildrens.AcceptUser.Name)</a>:
+                                                                                <span class="">@commentChildrens.Comment</span>
+                                                                            </div>
+                                                                            <div class="com-reoly-sign">
+                                                                                <time class="create-time">@commentChildrens.CommentDataTime</time>
+                                                                                <a href="#" class="ar-reply" title="回复" data_userName="@commentChildrens.User.Name" data_acId="@comment.ID" data_acceptUserId="@commentChildrens.User.Id"><i class="fa fa-comments-o"></i></a>
+                                                                                @{
+                                                                                    if (user.Value == commentChildrens.User.Id)
+                                                                                    {
+                                                                                        <a href="#" class="delete-reply" title="删除" data_acId="@commentChildrens.ID"><i class="fa fa-trash"></i></a>
+                                                                                    }
+                                                                                }
+                                                                                <div class="reply-com">
+
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        }
+                                                    }
+
+                                                }
+                                            </ul>
+                                        </div>
+                                        <!--子评论区结束-->
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                }
+            }
+        </ul>
+    </div>
+</div>
+<!--输入评论-->
+<div class="per-comment com-special-sign" data_Id="@activityId">
+    评论 <i class="fa fa-pencil-square-o sc-right"></i>
+</div>
+<!--输入评论-->

@@ -1,0 +1,50 @@
+﻿@using School.Entities.ApplicationOrganization
+@model IEnumerable<School.ViewModels.GroupOrganization.ActivityTerms.ActivityTermVM>
+@{
+    Layout = "_TemplateInterfaceLayout";
+    var pageParameter = ViewBag.PageParameter as School.Common.JsonModels.ListPageParameter;
+    List<ApplicationUser> interestUsers = ViewBag.InterestUsers;
+}
+
+<script src="~/js/BusinessView/ActuvutyTerm/Index.js"></script>
+<!--内容开始-->
+<div>
+    <div class="container">
+        <div class="total-content clearfix">
+            <div class="sc-left recommend" id="p_fixed">
+                <div class="per_data sa-margin-2c">
+                    <h4 class="title_per bor_top_none">推荐好友</h4>
+                    <div class="clearfix hobby">
+                        <ul class="clearfix sum_up">
+                            @{
+                                foreach (var item in interestUsers)
+                                {
+                                    <li>
+                                        <a href="#" class="de_head seeUserDetailed"  data_Id="@item.Id">
+                                            <img src="@(item.Avatar!=null?item.Avatar.UploadPath:"/images/Common/Default/head_portrait.gif")" alt="">
+                                            <strong style="color:#000000">@item.Name</strong>
+                                        </a>
+                                    </li>
+                                }
+                            }
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="sc-right ac-con">
+                <div class="clearfix choice">
+                    <ul class="sc-left clearfix ">
+                        <li><a href="#">全部活动</a></li>
+                        <li><a href="#">社团活动</a></li>
+                        <li><a href="#">个人活动</a></li>
+                    </ul>
+                </div>
+                <div class="ac-pe-con an-association" id="activityItem">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--内容结束-->

@@ -1,0 +1,42 @@
+﻿@model School.ViewModels.GroupOrganization.AnAssociations.AnAssociationInput
+
+<div class="activityInfo">
+    <form action="#" name="anAssociationForm">
+        <input type="hidden" name="ID" value="@Model.ID" />
+        <div style="">
+            <div class="operationDescription">
+                <h5 class="title_per title-in">添加社团</h5>
+            </div>
+            <div class="info-height">
+                <div class="info-fill-in">
+                    <label class="info-label">社团名称：</label>
+                    <div class="operation-box con-color">
+                        <input type="text" class="input-required" name="Name" value="@Model.Name">
+                    </div>
+                    <span class="input-cue">请填写活动名称</span>
+                </div>
+            </div>
+            <div class="info-height">
+                <div class="info-fill-in">
+                    <label class="info-label">学校：</label>
+                    <div class="operation-box con-color">
+                        <input type="text" class="input-required" name="SchoolAddress" value="@Model.SchoolAddress">
+                    </div>
+                    <span class="input-cue">请填写学校地址</span>
+                </div>
+            </div>
+            <div class="info-height">
+                <div class="info-fill-in">
+                    <label class="info-label">社团介绍：</label>
+                    <div class="operation-box con-color">
+                        <textarea class="input-required" name="Description" rows="4">@Model.Description</textarea>
+                    </div>
+                    <span class="input-cue">请填写活动内容</span>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="info-operation-bottom">
+        <button class="save-anAssociationForm">保存</button>
+    </div>
+</div>

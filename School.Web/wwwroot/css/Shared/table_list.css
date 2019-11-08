@@ -1,0 +1,32 @@
+﻿.table-list {
+    width: 100%;
+}
+
+.table-list-thead tr {
+    padding: 20px 30px;
+    border-bottom: 1px solid #ccc;
+}
+
+    .table-list-thead tr th {
+        padding: 10px 40px;
+        width: 260px;
+    }
+
+.table-list-tbody tr {
+    padding: 20px 30px;
+    border-bottom: 1px solid #ccc;
+}
+
+    .table-list-tbody tr td {
+        padding: 10px 40px;
+        width: 260px;
+    }
+
+.position-right-t {
+    position: absolute;
+    right: 120px;
+}
+
+.width-t-3 {
+    width: 120px !important;
+}

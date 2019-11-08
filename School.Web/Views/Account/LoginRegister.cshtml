@@ -1,0 +1,87 @@
+﻿@{ 
+    Layout = null;
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title id="bookmark">@(ViewBag.isPath ? "校园启行-登录界面" : "校园启行-注册界面")</title>
+    <link href="~/css/Account/style.css" rel="stylesheet" />
+    <link href="~/css/Account/font-awesome.css" rel="stylesheet" />
+
+    <script src="~/js/jquery-1.11.1.js"></script>
+    <script src="~/js/Account/logon_register.js"></script>
+</head>
+<body>
+    <!-- 主要内容 -->
+    <div class="main-agile">
+        <h1>校园启行</h1>
+        <div class="content ov-div">
+            <div class="top-grids">
+                <!--登录-->
+                <div class="interface @(ViewBag.isPath?"":"nterface-none")" id="signin_interface">
+                    <div class="signin-form-grid">
+                        <div class="signin-form">
+                            <h2>登录界面</h2>
+                            <form id="signin" role="search">
+                                <input type="text" name="UserName" id="userName" placeholder="用户名" required="">
+                                <input type="password" name="Password" id="password" placeholder="密码" required="">
+                                <div class="operation">
+                                    <div class="memory-assword">
+                                        <input type="checkbox" id="brand" value="">
+                                        <span>记住密码 ?</span>
+                                    </div>
+                                    <p class="prompt" id="logonModalErrMessage"></p>     <!--这是一个空的文字段落标签，用于显示登录操作状态 -->
+                                    <a href="#" class="link_a" id="new-register">注册新账号</a>
+                                </div>
+                               
+                                <input type="submit" class="logon_user" value="登录">
+                                <div class="signin-agileits-bottom">
+                                    <p><a href="#"style="margin-right:-100px;">忘记密码 ? ?</a><a href="#" class="float-rt">联系管理员 ? ?</a></p>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="signin-firm">
+                            <a href="../../ShoolStart/Index" class="return-xy">返回首页</a>
+                        </div>
+                    </div>
+                </div>
+                <!--登录结束-->
+                <!--注册-->
+                <div class="interface @(ViewBag.isPath?"nterface-none":"")" id="register_interface">
+                    <div class="signin-form-grid">
+                        <div class="signin-form">
+                            <h2>注册界面</h2>
+                            <form id="register" action="#" method="post">
+                                <input type="text" name="UserName" id="UserName" placeholder="用户名" required="">
+                                <input type="text" name="Email" id="Email" placeholder="邮箱" required="">
+                                <input type="password" name="Password" id="rPassword" placeholder="密码" required="">
+                                <input type="password" name="ConfirmPassword" id="confirmPassword" placeholder="确认密码" required="">
+                                <div class="operation clear">
+                                    <p class="prompt" id="registerModalErrMessage"><span style="color:#00fbc3">登录名只能输入英文或数字，密码六位数以上，且包括中英文</span></p>     <!--这是一个空的文字段落标签，用于显示登录操作状态 -->
+                                    <a href="#" class="link_a" id="return_in">返回登录界面</a>
+                                    <div class=" clear"></div>
+                                </div>
+                                <input type="submit" class="register_user" value="注册">
+                                <div class="signin-agileits-bottom">
+                                    <p><a href="#">用户注册协议</a></p>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="signin-firm">
+                            <a href="../../ShoolStart/Index" class="return-xy">返回首页</a>
+                        </div>
+                    </div>
+                </div>
+                <!--注册结束-->
+                <div class="copyright">
+                    <p> © 保留所有设计权利|<a href="#" target="_blank">校园启行</a></p>
+                </div>
+                <div class="clear"> </div>
+            </div>
+        </div>
+    </div>
+    <!-- //主要内容 -->
+</body>
+</html>
+

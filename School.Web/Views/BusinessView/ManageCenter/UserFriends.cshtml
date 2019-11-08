@@ -1,0 +1,40 @@
+﻿@model IEnumerable<School.ViewModels.ApplicationOrganization.ApplicationUserVM>
+<div class="clearfix info-setting" style="width:100%">
+    <div>
+        <h5 class="title_per title-in">我的好友</h5>
+        <div class="per-hobby ac-info-images clearfix">
+            <div class="head-portrait-change clearfix">
+                <ul>
+                    @{
+                        if (Model.Count() != 0)
+                        {
+                            foreach (var user in Model)
+                            {
+                                <li>
+                                    <div class="ac-per-info clearfix">
+                                        <a href="#" class="sc-left image-a ac-image-op">
+                                            <img src="@(user.AvatarPath != null? user.AvatarPath.UploadPath:"/images/Common/Default/head_portrait.gif")" alt="">
+                                            <i class="fa fa-times delete-user-friend" data-user-id="@user.ID"></i>
+                                        </a>
+                                        <div class="ac-per-info-add">
+                                            <h4>@user.Name</h4>
+                                            <p>@(user.Sex ? "男" : "女")</p>
+                                            <a href="#" class="seeUserDetailed" data_Id="@user.ID"><i class="fa fa-plus"></i>查看</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                        }
+                        else
+                        {
+                            <div style="margin-top:20px">
+                                <p style="font-size: 20px; margin-left: 30px;">您还没有添加任何好友！！</p>
+                            </div>
+                        }
+                    }
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>

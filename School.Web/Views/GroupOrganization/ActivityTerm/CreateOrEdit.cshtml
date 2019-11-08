@@ -1,0 +1,90 @@
+﻿@model School.ViewModels.GroupOrganization.ActivityTerms.ActivityTermVM
+@{
+    Layout = "_emptyLayout";
+}
+
+<form class="form-horizontal" asp-action="Sava" id="activityTermEditor" data-toggle="validator" role="form">
+    <input type="hidden" name="ID" id="ID" value="@Model.ID" />
+    <div class="form-group">
+        <label for="Name" class="col-sm-2 control-label">名称：</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control" name="Name" id="Name" placeholder="活动名称" value="@Model.Name" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Mobile" class="col-sm-2 control-label">活动举办方：</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control" name="AnAssociationID" id="AnAssociationID" placeholder="活动举办方" value="@(Model.AnAssociation != null ? Model.AnAssociation.Name : null)" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Mobile" class="col-sm-2 control-label">活动地点：</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control" name="Address" id="Address" placeholder="活动地点" value="@Model.Address" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Mobile" class="col-sm-2 control-label">上限人数：</label>
+        <div class="col-sm-9">
+            <input type="number" class="form-control" name="MaxNumber" id="MaxNumber" placeholder="上限人数" value="@Model.MaxNumber" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Mobile" class="col-sm-2 control-label">报名参与时间：</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control signDataTime" name="SignDataTime" id="SignDataTime" placeholder="报名参与时间" value="@Model.EndDataTime" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Mobile" class="col-sm-2 control-label">活动报名结束时间：</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control endDataTime" name="EndDataTime" id="EndDataTime" placeholder="活动报名结束时间" value="@Model.EndDataTime" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Mobile" class="col-sm-2 control-label">活动开始时间：</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control startDataTime" name="StartDataTime" id="StartDataTime" placeholder="活动开始时间" value="@Model.StartDataTime" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Mobile" class="col-sm-2 control-label">费用：</label>
+        <div class="col-sm-9">
+            <input type="number" class="form-control" name="Expenses" id="Expenses" placeholder="费用" value="@Model.Expenses" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Description" class="col-sm-2 control-label">活动介绍：</label>
+        <div class="col-sm-9">
+            <textarea class="form-control" rows="4" name="Description" id="Description">@Model.Description</textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">提交数据</button>
+        </div>
+    </div>
+</form>
+<script>
+    //  level分为 YM YMD H HM 四个有效值，分别表示年月 年月日 年月日时 年月日时分,less表示是否不可小于当前时间。年-月-日 时:分 时为24小时制
+    //  为确保控件结构只出现一次，在有需要的时候进行一次调用。
+    borainTimeChoice({
+        start: "#EndDataTime",
+        end: "",
+        level: "H",
+        less: false
+    });
+    borainTimeChoice({
+        start: "#SignDataTIme",
+        end: "",
+        level: "H",
+        less: false
+    });
+    borainTimeChoice({
+        start: "#StartDataTime",
+        end: "",
+        level: "H",
+        less: false
+    });
+</script>

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<School.ViewModels.GroupOrganization.AnAssociationVM>
+
+<div style="min-height:600px;position:relative">
+    @{
+        if (Model.Count() == 0)
+        {
+            <div style="height:600px;text-align:center;padding-top: 30px;font-size:22px"><p>查询到O条活动</p></div>
+        }
+        else
+        {
+            <div>
+                <ul class="clearfix">
+                    @foreach (var an in Model)
+                    {
+                        <li class="an-info-con clearfix">
+                            <div class="image">
+                                <a href="#" class="an-detailied" data_Id="@an.ID"><img src="@(an.Avatar!=null?an.Avatar.UploadPath:"/images/Common/Default/no_image.png")" alt=""></a>
+                            </div>
+                            <div class="title">
+                                <h3><a href="#" class="an-detailied" data_Id="@an.ID">@an.Name</a><a class="founder">@an.User.Name</a></h3>
+                            </div>
+                            <div class="number sc-left">
+                                <span class="per_num_str">人数:</span>
+                                <span class="per_number">@an.AnAssociationNum</span>
+                            </div>
+                            <div class="join_see_div sc-right">
+                                <a class="join_an addAnAssociation" data_Id="@an.ID"><i class="fa fa-plus"></i>加入</a>
+                                <a class="see-an an-detailied" data_Id="@an.ID"><i class="fa fa-eye"></i>查看</a>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+            <!-- 处理翻页器 -->
+            <div class="pageContent">
+                @Html.Partial("~/Views/Common/PagingProcess.cshtml")
+            </div>
+        }
+    }
+</div>

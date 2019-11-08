@@ -1,0 +1,105 @@
+
+body {
+    color: #797979;
+    background: #eeeeee;
+     font-family: 'Lato', sans-serif;
+    padding: 0px !important;
+    margin: 0px !important;
+    font-size: 14px !important;
+}
+
+/*404 page*/
+h1, h2, h3, h4, h5 {
+    font-weight: 300;
+}
+p {
+     margin: 0 0 10px;
+ }
+.page-404{
+  position:relative;
+  width:350px;
+  height:200px;    
+  margin:100px auto;
+  text-align: center;
+}
+
+.text-404 {
+    font-size: 138px;
+    background: #9a8c7a;
+    background-repeat: no-repeat;
+    background-size: 200% 200%;
+    background-position: 100% 100%;
+    -webkit-animation: square 3s linear infinite;
+    -ms-animation: square 3s linear infinite;
+    animation: square 3s linear infinite;
+    -webkit-background-clip: text;
+    color: transparent;
+    text-align: center;
+    line-height: 200px;
+    position: relative;
+}
+
+.text-404:nth-of-type(2){
+  text-shadow:none;
+  z-index:2;
+  position:absolute;
+  top:-139px;
+  left:-1px;
+}
+
+@-webkit-keyframes square {
+  0% { background-position: 0 0; }
+  25% { background-position: 100% 0; }
+  50% { background-position: 100% 100%; }
+  75% { background-position: 0 100%; }
+  100% { background-position: 0 0; }
+}
+
+@-ms-keyframes square {
+  0% { background-position: 0 0; }
+  25% { background-position: 100% 0; }
+  50% { background-position: 100% 100%; }
+  75% { background-position: 0 100%; }
+  100% { background-position: 0 0; }
+}
+
+@keyframes square {
+  0% { background-position: 0 0; }
+  25% { background-position: 100% 0; }
+  50% { background-position: 100% 100%; }
+  75% { background-position: 0 100%; }
+  100% { background-position: 0 0; }
+}
+
+/*profile*/
+
+.profile-nav .user-heading {
+    background: #688a7e;
+    color: #fff;    
+    padding: 30px;
+    text-align: center;
+}
+
+.profile-nav .user-heading.round a  {
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border: 10px solid rgba(256,256,256,0.3);
+    display: inline-block;
+}
+
+.profile-nav .user-heading a img {
+    width: 112px;
+    height: 112px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+}
+
+.profile-nav .user-heading h1 {
+    font-size: 22px;
+    font-weight: 300;
+    margin-bottom: 5px;
+}
+
+.profile-nav .user-heading p {
+    font-size: 12px;
+}

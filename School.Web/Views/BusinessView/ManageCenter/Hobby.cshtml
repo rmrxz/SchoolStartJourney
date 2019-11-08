@@ -1,0 +1,50 @@
+﻿@model IEnumerable<School.ViewModels.ApplicationOrganization.HobbyVM>
+<!--个人简介和导航开始-->
+
+<div class="clearfix info-setting">
+    <div>
+        <div>
+            <h5 class="title_per title-in">我的爱好</h5>
+        </div>
+        <div class="per-hobby">
+            <h5 class="title-in title-ho">先从你喜欢的东西开始，让别人了解你。</h5>
+            <div class="hobby-list clearfix">
+                <p class="ch-ho-p">请选择你的爱好!!<a href="#">换一批</a></p>
+                <div class="ho-choose clearfix" id="ho-choose">
+                    <ul>
+                        @{
+                            foreach (var item in Model)
+                            {
+                                <li><label hobby_Id="@item.ID" data_img="@item.Avatar.UploadPath">@item.Name</label></li>
+                            }
+                        }
+                    </ul>
+                </div>
+                <div class="ho-see clearfix" id="ho-see">
+                    <ul class="user_hobby">
+                        @{
+                            if (ViewBag.UserHobbyList.Count != 0)
+                            {
+                                foreach (var item in ViewBag.UserHobbyList)
+                                {
+                                    <li class="hoddy-li-a">
+                                        <img src="@item.Avatar.UploadPath" alt="">
+                                        <div class="ho-ma">
+                                            <input type="hidden" name="@item.Name" value="@item.ID" data_img="@item.Avatar.UploadPath">
+                                            <h5>@item.Name</h5><a href="#" class="delete-hobby">删除</a>
+                                        </div>
+                                    </li>
+                                }
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="info-operation-bottom">
+                <button class="save-user-hobby">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+

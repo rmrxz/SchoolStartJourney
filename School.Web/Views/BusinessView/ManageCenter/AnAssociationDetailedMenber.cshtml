@@ -1,0 +1,48 @@
+﻿@model School.ViewModels.GroupOrganization.AnAssociationVM
+@using School.Entities.GroupOrganization;
+
+<div>
+    <div class="operationDescription">
+        <h5 class="title_per title-in"><a href="" id="detailed-anAssociation" data-acId="@Model.ID">社团信息</a> </h5>
+        <h5 class="title_per title-in"><a href="" id="detailed-anAssociation-images" data-acId="@Model.ID">社团图片</a></h5>
+        <h5 class="title_per title-in"><a href="" id="detailed-anAssociation-members" data-acId="@Model.ID">社团成员</a></h5>
+    </div>
+    <div class="ac-info-images clearfix">
+        <ul id="activityImages">
+            @{
+                if (Model.Members.Count() > 0)
+                {
+                    foreach (var item in Model.Members)
+                    {
+                        <li>
+                            <div class="ac-per-info clearfix">
+                                <a href="#" class="sc-left ac-image-op image-a">
+                                    <img src="@(item.User.Avatar!=null?item.User.Avatar.UploadPath:"/images/Common/Default/head_portrait.gif")" alt="">
+                                    @{
+                                        if (Model.User.Id == User.Claims.FirstOrDefault().Value && item.User.Id != User.Claims.FirstOrDefault().Value)
+                                        {
+                                            <i class="fa fa-times delete-anAssociation-member" data-member-id="@item.ID"></i>
+                                        }
+                                    }
+
+                                </a>
+                                <div class="ac-per-info-add">
+                                    <h4>@item.User.Name</h4>
+                                    <p>@(item.AnJurisdictionManager == AnJurisdiction.Founder ? "社长" : item.AnJurisdictionManager == AnJurisdiction.Admin ? "管理员" : "社员")</p>
+                                    <a href="#" class="seeUserDetailed" data_Id="@item.User.Id"><i class="fa fa-plus"></i>查看</a>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                }
+                else
+                {
+                    <span style="display:block;font-size:18px;font-weight:bold">暂无人参与</span>
+                }
+            }
+
+        </ul>
+    </div>
+</div>
+
+

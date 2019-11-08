@@ -1,0 +1,72 @@
+﻿@using School.ViewModels.GroupOrganization
+@using School.Entities.ApplicationOrganization
+@{
+    Layout = "_TemplateInterfaceLayout";
+}
+@{
+    List<AnAssociationVM> ans = ViewBag.ListAns;
+    List<ApplicationUser> interestUsers = ViewBag.InterestUsers;
+}
+<script src="~/js/BusinessView/AnAssociationView/Index.js"></script>
+<!--内容开始-->
+<div class="">
+    <div class="container">
+        <div class="total-content clearfix">
+            <div class="sc-left recommend" id="p_fixed">
+                <div class="per_data an-data sa-margin-none sa-margin-2c">
+                    <h4 class="title_per">推荐社团</h4>
+                    <div class="clearfix hobby">
+                        <ul class="">
+                            @{
+                                if (ans != null)
+                                {
+                                    foreach (var an in ans)
+                                    {
+                                        <li>
+                                            <div class="de_pa an-info clearfix">
+                                                <div class="de_img sc-left">
+                                                    <a href="#"><img src="@(an.Avatar!=null?an.Avatar.UploadPath:"/images/Common/Default/no_image.png")" alt=""></a>
+                                                </div>
+                                                <div class="de_ac_info">
+                                                    <span>@an.Name</span>
+                                                    <p>人数：<span>@an.AnAssociationNum</span></p>
+                                                    <a href="#" class="an-detailied" data_Id="@an.ID">查看</a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    }
+                                }
+
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <div class="per_data sa-margin-none">
+                    <h4 class="title_per">推荐好友</h4>
+                    <div class="clearfix hobby">
+                        <ul class="clearfix sum_up">
+                            @{
+                                foreach (var item in interestUsers)
+                                {
+                                    <li>
+                                        <a href="#" class="de_head seeUserDetailed" data_Id="@item.Id">
+                                            <img src="@(item.Avatar!=null?item.Avatar.UploadPath:"/images/Common/Default/head_portrait.gif")" alt="">
+                                            <strong style="color:#000000">@item.Name</strong>
+                                        </a>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="sc-right ac-con">
+                <div class="title_an"><h3>社团列表</h3></div>
+                <div class="an-association clearfix" id="anAssociationList">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--内容结束-->

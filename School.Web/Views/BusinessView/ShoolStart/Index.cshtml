@@ -1,0 +1,116 @@
+﻿@{
+    Layout = "_TemplateInterfaceLayout";
+}
+<script src="~/js/BusinessView/ShoolStart/Index.js"></script>
+<!--图片轮播开始-->
+<div class="banner">
+    <div>
+        <div class="ag7-bannerslide carousel">
+
+            <ul class="slidebox">
+                @{
+                    foreach (var item in ViewBag.sowingMapList)
+                    {
+                        <li><a href="#" class="activity-detailied" data_Id="@item.Activity.ID" target="_blank"><img alt="@item.Activity.Name" src="@(item.Activity.Avatar!=null?item.Activity.Avatar.UploadPath:"")"></a></li>
+                    }
+                }
+            </ul>
+            <div class="slideinfo">
+                <div class="slidetitle">
+                    <h2></h2>
+                    <h3 class="activity-describe"></h3>
+                </div>
+                <div class="slidelist">
+                    <ul>
+                        @{
+                            foreach (var item in ViewBag.sowingMapList)
+                            {
+                                <li class="activity-detailied" data_Id="@item.Activity.ID" data-h1="@item.Activity.Name" data-h2="@item.Activity.Description">
+                                    <img width="50" height="22" src="@(item.Activity.Avatar!=null?item.Activity.Avatar.UploadPath:"")">
+                                </li>
+                            }
+                        }
+                    </ul>
+                    <div class="mask">
+                        <span class="mask-top"></span>
+                        <span class="mask-left"></span>
+                        <span class="mask-bottom"></span>
+                        <span class="mask-right"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--图片轮播结束-->
+<!--内容区-->
+<div class="activity">
+    <div class="container">
+        <!--活动介绍开始-->
+        <div class="row reduce-margin">
+            @{
+                foreach (var item in ViewBag.activityVMList)
+                {
+                    <div class="bb-grids">
+                        <a href="#" class="thumbnail effect-bubba activity-detailied" data_Id="@item.ID">
+                            <figcaption>
+                                <h2>@item.Name</h2>
+                                <p>@item.Description</p>
+                            </figcaption>
+                            <img src="@(item.Avatar!=null?item.Avatar.UploadPath:"/images/Common/Default/no_image.png")" />
+                        </a>
+                    </div>
+                }
+            }
+        </div>
+        <div class="introduce-ac">
+            <a href="#">如果你感觉孤独，请放下你的顾忌，融入我们!!</a>
+            <p> 没有人是喜欢等待的，但等待是人生的常态，很多事情没结果之前只能等待，在一切还没有变好之前，我们只能学会等待，看书、健身、旅行、工作，总之你得先成为自己喜欢的样子，你要的人才会来遇见你。 </p>
+        </div>
+        <div class="per-activity">
+            <div class="d-titel">
+                <h3 class="h3-titel"><span class=" fa fa-th-large"></span>个人活动</h3>
+            </div>
+            <div class="row reduce-margin clearfix">
+                @{
+                    foreach (var item in ViewBag.activityVMPerList)
+                    {
+                        <div class="bb-grids featur-grids">
+                            <div class="ac-introduce feature-thmbnl">
+                                <img src="@(item.Avatar!=null?item.Avatar.UploadPath:"/images/Common/Default/no_image.png")" alt="">
+                                <div class="caption">
+                                    <h5>
+                                        <a href="#" class="titel-ac">@item.Name</a>
+                                    </h5>
+                                    <div class="ac-info">
+                                        <a href="#">报名时间</a>
+                                        <span>@item.StartDataTime 至 @item.EndDataTime</span>
+                                    </div>
+                                    <p>@item.Description</p>
+                                    <a href="#" class="btn-See activity-detailied" data_Id="@item.ID">查看</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+        <!--活动介绍结束-->
+        <!--社团列表开始-->
+        <div class=" as-back">
+            <h3 class="h3-titel">
+                <a href="#" class="as-a"><i class="fa fa-group"></i>推荐社团</a>
+                <a class="sc-right a-batch" href="javascript:;" id="singAndExchange"><i class="fa fa-refresh"></i><span>换一批</span></a>
+            </h3>
+            <div class="posts">
+                <ul id="ulAnAssociation"></ul>
+            </div>
+        </div>
+        <!--社团列表结束-->
+    </div>
+</div>
+<script>
+    bannerSlide();
+</script>
+
+
